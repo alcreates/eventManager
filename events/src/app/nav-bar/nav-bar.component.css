@@ -1,0 +1,26 @@
+.navItem {  
+    color: #463e3b;
+    font-size: .75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: .35px;
+}
+
+.navItemLogo {
+    color: #463e3b;
+    font-size: .95rem;
+    line-height: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 5px;
+}
+
+.navBar {
+    background-color: #fff;
+    height: 70px;
+    border-top: 3px solid #464342;
+}
+
