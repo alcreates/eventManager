@@ -11,8 +11,9 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .home_header {
-    padding: 11.3875rem calc(50vw - 473px) 14.4875rem;
+    padding: 11.3875rem calc(50vw - 473px) 5.4875rem;
     text-align: left;
     position: relative;
     background: rgba(0,0,0,.3);
@@ -37,4 +38,27 @@
     font-weight: 700;
     font-family: Avenir;
 }
+
+.seeMore {
+    float: right;
+    line-height: 1.1875rem;
+    font-size: .875rem;
+    font-weight: 700;
+    color: #23c6a1;
+    position: relative;
+    margin-right: .9375rem;
+}
+
+.featuredVenueTitle {
+    font-size: 1.25rem;
+    line-height: 1.6875rem;
+    font-weight: 700;
+    color: #464342;
+}
+
+.feature_header {
+    margin-top: 3.25rem;
+    margin-bottom: 1.875rem;
+}
+
 
