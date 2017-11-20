@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule } from '@angular/material';
@@ -23,7 +24,12 @@ import { FooterComponent } from './footer/footer.component';
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatMenuModule
+    MatMenuModule,
+    RouterModule.forRoot(
+      [
+        {path: '', component: HomeComponent},
+      ]
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
