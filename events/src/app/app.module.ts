@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchPanelComponent } from './search-panel/search-panel.component';
 import { FeaturedVenuesComponent } from './featured-venues/featured-venues.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     SearchPanelComponent,
     FeaturedVenuesComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import { FooterComponent } from './footer/footer.component';
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent},
+        {path: 'login', component: LoginComponent}
       ]
     )
   ],
