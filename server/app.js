@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const mysql = require('mysql');
+const authRoutes = require('./routes/auth-routes');
+
+
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -25,7 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false}));
 
 
-
+app.use('/auth', authRoutes);
 app.post('/api/test', function () {
     //let groceryServiceObj = new groceryService(req, res)
     //groceryServiceObj.addGrocery()
