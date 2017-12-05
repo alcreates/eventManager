@@ -1,4 +1,4 @@
-<div class="bg-dark" style="height: 600px">
+<div class="bg-dark" [ngStyle]="{'min-height': clientHeight + 'px'}">
 <div class="container py-5">
   <div class="row">
       <div class="col-md-12">
@@ -28,7 +28,8 @@
                                     <span class="custom-control-description small">Remember me on this computer</span>
                                   </label>
                               </div>
-                              <a href="" >Register </a>
+                              <a class="nav-link navItem" routerLink ="/register" >LOG IN</a>
+                              
                     
                               <button type="button" class="btn btn-success btn-lg float-right">Login</button>
                           </form>

@@ -10,6 +10,7 @@ import { SearchPanelComponent } from './search-panel/search-panel.component';
 import { FeaturedVenuesComponent } from './featured-venues/featured-venues.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoginComponent } from './login/login.component';
     SearchPanelComponent,
     FeaturedVenuesComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent},
-        {path: 'login', component: LoginComponent}
+        {path: 'login', component: LoginComponent},
+        {path: 'register', component: RegisterComponent}
       ]
     )
   ],
