@@ -9,7 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { SearchPanelComponent } from './search-panel/search-panel.component';
 import { FeaturedVenuesComponent } from './featured-venues/featured-venues.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { UserTypeComponent } from './register/user-type/user-type.component';
+import { PersonalComponent } from './register/user-type/personal/personal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +20,12 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     SearchPanelComponent,
     FeaturedVenuesComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserTypeComponent,
+    PersonalComponent
+
   ],
   imports: [
     BrowserModule,
@@ -28,6 +36,9 @@ import { FooterComponent } from './footer/footer.component';
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent},
+        {path: 'login', component: LoginComponent},
+        {path: 'register', component: RegisterComponent},
+        {path: 'register/personal', component: PersonalComponent }
       ]
     )
   ],
