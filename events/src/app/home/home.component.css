@@ -7,13 +7,13 @@
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
-    background-position: center;
+    background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .home_header {
-    padding: 11.3875rem calc(50vw - 473px) 5.4875rem;
+    padding: 11.3875rem calc(50vw - 473px) 11.3875rem;
     text-align: left;
     position: relative;
     background: rgba(0,0,0,.3);
