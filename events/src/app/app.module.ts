@@ -1,3 +1,5 @@
+import { HttpModule } from '@angular/http';
+import { AuthServiceService } from './auth-service.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -33,6 +35,7 @@ import { PersonalComponent } from './register/user-type/personal/personal.compon
     MatFormFieldModule,
     MatNativeDateModule,
     MatMenuModule,
+    HttpModule,
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent},
@@ -42,7 +45,9 @@ import { PersonalComponent } from './register/user-type/personal/personal.compon
       ]
     )
   ],
-  providers: [],
+  providers: [
+    AuthServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

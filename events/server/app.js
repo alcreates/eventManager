@@ -1,12 +1,23 @@
 const express = require('express');
 const path = require('path');
 const http = require('http');
+const passportSetup = require('./config/passport-setup');
+
 
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const authRoutes = require('./routes/auth-routes');
 
 const app = express();
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended : false}));
+
+// Point static path to dist
+app.use(express.static(path.join(__dirname, '../dist')));
+
+app.use('/auth', authRoutes);
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -15,7 +26,6 @@ const connection = mysql.createConnection({
     password: 'root',
     database: 'sit_parker'
 });
-
 connection.connect(function(err){
     if(!err){
         console.log("Database is connected ");
@@ -25,16 +35,6 @@ connection.connect(function(err){
     }
 
 });
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended : false}));
-
-// Point static path to dist
-app.use(express.static(path.join(__dirname, '../dist')));
-
-
-
-app.use('/auth', authRoutes);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
@@ -47,6 +47,7 @@ app.post('api/test', function () {
     //groceryServiceObj.addGrocery()
      res.send("reached end point");
   });
+
 
 
 /**

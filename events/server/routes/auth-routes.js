@@ -1,4 +1,12 @@
 const router = require('express').Router();
+const passport = require('passport');
+const express = require('express');
+const app = express();
+const cors = require('cors');
+
+app.use(cors());
+
+
 //auth logout
 
 router.get('/logout',(req,res) =>{
@@ -6,9 +14,12 @@ router.get('/logout',(req,res) =>{
 });
 
 //auth with google
-router.get('/google', (req,res) => {
-// handle with passport
-    res.send('loggin in with google');
+router.get('/google', passport.authenticate('google', {
+   scope: ['profile'] 
+}) );
+
+router.get('/redirect',(req,res)=>{
+    res.send('redirected');
 });
 
 
