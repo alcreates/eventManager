@@ -1,9 +1,9 @@
 .parallax { 
     /* The image used */
-    background-image: url("../../assets/alex.jpg");
+    background-image: url("https://s-media-cache-ak0.pinimg.com/originals/04/81/25/0481252133f031d85f8f4deb3e101d3b.jpg");
 
     /* Set a specific height */
-    height: 500px; 
+    height: 550px; 
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
