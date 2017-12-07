@@ -5,10 +5,10 @@ const passportSetup = require('./config/passport-setup');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
-//const cors = require('cors');
-
+const Sequelize = require('sequelize');
+const models = require('./models');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const authRoutes = require('./routes/auth-routes');
 
 const app = express();
@@ -27,26 +27,69 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/auth', authRoutes);
+// const sequelize = new Sequelize(keys.database.db , keys.database.username, keys.database.password, {
+//     host: 'localhost',
+//     port:'8889',
+//     dialect: 'mysql',
+  
+//     pool: {
+//       max: 5,
+//       min: 0,
+//       acquire: 30000,
+//       idle: 10000
+//     }
 
+//   });
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    port:8889, 
-    user: 'root',
-    password: 'root',
-    database: 'sit_parker'
-});
-connection.connect(function(err){
-    if(!err){
-        console.log("Database is connected ");
-    }else {
-        console.log(err);
-        console.log("Error connecting database");
-    }
+//   sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('Connection has been established successfully.');
+//   })
+//   .catch(err => {
+//     console.error('Unable to connect to the database:', err);
+//   });
 
-});
-
-// Catch all other routes and return the index file
+//   const User = sequelize.define('user', {
+//     firstName: {
+//       type: Sequelize.STRING,
+//       allowNull: false
+//     },
+//     lastName: {
+//       type: Sequelize.STRING,
+//       allowNull: false
+//     },
+//     phoneNumber: {
+//       type: Sequelize.STRING  
+//     },
+//     streetAddress: {
+//       type: Sequelize.STRING,
+//       allowNull: false
+//     },
+//     zipCode: {
+//         type: Sequelize.INTEGER,
+//         allowNull:false
+//     },
+//     email: {
+//         type: Sequelize.STRING,
+//         unique: true,
+//         allowNull:false
+//     },
+//     type: {
+//         type: Sequelize.STRING,
+//         allowNull: false
+//     },
+//     password: {
+//         type: Sequelize.STRING
+//     }
+//   });
+  
+  // force: true will drop the table if it already exists
+ // User.sync({force: true}).then(() => {
+    // Table created
+   
+ // });
+  
 
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
@@ -67,4 +110,8 @@ const server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+models.sequelize.sync().then(() => {
+
+    server.listen(port, () => console.log(`API running on localhost:${port}`));
+
+});
