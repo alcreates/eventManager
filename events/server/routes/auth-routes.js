@@ -1,10 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
-const express = require('express');
-const app = express();
-const cors = require('cors');
 
-app.use(cors());
+
 
 
 //auth logout
@@ -18,9 +15,19 @@ router.get('/google', passport.authenticate('google', {
    scope: ['profile'] 
 }) );
 
-router.get('/redirect',(req,res)=>{
-    res.send('redirected');
+router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
+   //req.user
+    res.redirect('/');
 });
+
+const authCheck = (req, res, next ) =>{
+    if(!req.user){
+        // if user is not logged in.
+        res.redirect('/auth/login');
+    }else {
+        // if they are logged in call next()
+    }
+}
 
 
 module.exports = router;

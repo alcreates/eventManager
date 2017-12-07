@@ -1,4 +1,4 @@
-import { HttpModule } from '@angular/http';
+import { BrowserXhr, HttpModule } from '@angular/http';
 import { AuthServiceService } from './auth-service.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserTypeComponent } from './register/user-type/user-type.component';
 import { PersonalComponent } from './register/user-type/personal/personal.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { CustExtBrowserXhr } from './cust-ext-browser-xhr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,9 @@ import { PersonalComponent } from './register/user-type/personal/personal.compon
     )
   ],
   providers: [
-    AuthServiceService
+    AuthServiceService,
+    {provide: BrowserXhr, useClass: CustExtBrowserXhr},
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

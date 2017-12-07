@@ -2,7 +2,10 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const passportSetup = require('./config/passport-setup');
-
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const keys = require('./config/keys');
+//const cors = require('cors');
 
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
@@ -13,11 +16,18 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false}));
+app.use(cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [keys.session.cookieKey]
+}));
 
+app.use(passport.initialize());
+app.use(passport.session());
 // Point static path to dist
 app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/auth', authRoutes);
+
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -37,17 +47,10 @@ connection.connect(function(err){
 });
 
 // Catch all other routes and return the index file
-app.get('*', (req, res) => {
+
+  app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
-  });
-
-
-app.post('api/test', function () {
-    //let groceryServiceObj = new groceryService(req, res)
-    //groceryServiceObj.addGrocery()
-     res.send("reached end point");
-  });
-
+});
 
 
 /**
