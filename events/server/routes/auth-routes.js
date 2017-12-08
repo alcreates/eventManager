@@ -7,7 +7,8 @@ const passport = require('passport');
 //auth logout
 
 router.get('/logout',(req,res) =>{
-    res.send('loggin out');
+    req.logout();
+    res.redirect('/');
 });
 
 //auth with google

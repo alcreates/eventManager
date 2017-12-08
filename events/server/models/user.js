@@ -13,23 +13,29 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.STRING  
         },
         streetAddress: {
-          type: DataTypes.STRING,
-          allowNull: false
+          type: DataTypes.STRING
         },
         zipCode: {
-            type: DataTypes.INTEGER,
-            allowNull:false
+            type: DataTypes.INTEGER
+            
         },
         email: {
             type: DataTypes.STRING,
-            unique: true,
-            allowNull:false
+            unique: true
         },
         type: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
         },
         password: {
+            type:  DataTypes.STRING
+        },
+        googleId: {
+            type:  DataTypes.STRING
+        },
+        facebookId: {
+            type:  DataTypes.STRING
+        },
+        linkedInId: {
             type:  DataTypes.STRING
         }
       })

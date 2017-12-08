@@ -27,68 +27,6 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/auth', authRoutes);
-// const sequelize = new Sequelize(keys.database.db , keys.database.username, keys.database.password, {
-//     host: 'localhost',
-//     port:'8889',
-//     dialect: 'mysql',
-  
-//     pool: {
-//       max: 5,
-//       min: 0,
-//       acquire: 30000,
-//       idle: 10000
-//     }
-
-//   });
-
-//   sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to the database:', err);
-//   });
-
-//   const User = sequelize.define('user', {
-//     firstName: {
-//       type: Sequelize.STRING,
-//       allowNull: false
-//     },
-//     lastName: {
-//       type: Sequelize.STRING,
-//       allowNull: false
-//     },
-//     phoneNumber: {
-//       type: Sequelize.STRING  
-//     },
-//     streetAddress: {
-//       type: Sequelize.STRING,
-//       allowNull: false
-//     },
-//     zipCode: {
-//         type: Sequelize.INTEGER,
-//         allowNull:false
-//     },
-//     email: {
-//         type: Sequelize.STRING,
-//         unique: true,
-//         allowNull:false
-//     },
-//     type: {
-//         type: Sequelize.STRING,
-//         allowNull: false
-//     },
-//     password: {
-//         type: Sequelize.STRING
-//     }
-//   });
-  
-  // force: true will drop the table if it already exists
- // User.sync({force: true}).then(() => {
-    // Table created
-   
- // });
   
 
   app.get('*', (req, res) => {
@@ -112,6 +50,7 @@ const server = http.createServer(app);
  */
 models.sequelize.sync().then(() => {
 
-    server.listen(port, () => console.log(`API running on localhost:${port}`));
+    server.listen(port, () => console.log(`API running on localhost:${port} `));
 
+    
 });
