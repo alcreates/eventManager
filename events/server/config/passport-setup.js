@@ -1,7 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-
+const FacebookStrategy = require('passport-facebook').Strategy;
 const keys = require('./keys');
 const models = require('../models');
 
@@ -25,13 +25,7 @@ passport.use(new GoogleStrategy({
     clientSecret: keys.google.clientSecret 
     },(accessToken, refreshToken, profile, done) => {
       
-        // call back
-        // get user info from data base or create new user.
-        // use id from data base to create a cookie. 
-        //console.log(profile.id, profile.name.familyName )
      models.user.findOrCreate({where:{
-                          firstName : profile.name.givenName,
-                          lastName: profile.name.familyName,
                           googleId: profile.id
                          }}).spread((user, created)=>{
                                 let plainUser = user.get({plain: true});
@@ -56,10 +50,36 @@ passport.use(new LinkedInStrategy({
 }, function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
   process.nextTick(function () {
-    // To keep the example simple, the user's LinkedIn profile is returned to
-    // represent the logged-in user. In a typical application, you would want
-    // to associate the LinkedIn account with a user record in your database,
-    // and return that user instead.
-    return done(null, profile);
+   
+    models.user.findOrCreate({where:{
+    
+        linkedinId: profile.id
+       }}).spread((user, created)=>{
+              let plainUser = user.get({plain: true});
+              done(null, plainUser);
+              console.log(created);
+       }).catch((error)=>{
+          console.log(error);
+       });
+
   });
 }));
+
+passport.use(new FacebookStrategy({
+    clientID: keys.facebook.clientID,
+    clientSecret: keys.facebook.clientSecret,
+    callbackURL: "/auth/facebook/redirect"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    // models.user.findOrCreate({where:{
+    //         facebookId: profile.id
+    //        }}).spread((user, created)=>{
+    //               let plainUser = user.get({plain: true});
+    //              return done(null, plainUser);
+    //               console.log(created);
+    //        }).catch((error)=>{
+    //           console.log(error);
+    //        });
+    return done(null,profile);
+  }
+));

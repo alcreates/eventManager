@@ -38,6 +38,15 @@ router.get('/signin-linkedin', passport.authenticate('linkedin'),(req,res)=>{
     res.redirect('/');
 });
 
+router.get('/facebook',
+passport.authenticate('facebook'));
+
+router.get('/facebook/redirect',
+passport.authenticate('facebook', {successRedirect : '/', failureRedirect:'/'}),
+function(req, res) {
+    res.redirect('/');
+});
+
 
 
 

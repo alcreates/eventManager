@@ -9,6 +9,16 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+  
   <app-root></app-root>
+  <script>
+    //Facebook Oauth bug
+     if (window.location.hash == '#_=_'){
+          history.replaceState 
+          ? history.replaceState(null, null, window.location.href.split('#')[0])
+          : window.location.hash = '';
+      }
+  </script>
+  
 </body>
 </html>
