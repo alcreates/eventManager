@@ -7,9 +7,12 @@ export class AuthServiceService {
   constructor(private http: Http) {
   }
 
-  googleLogin(){
+  googleLogin() {
     this.http.get('/auth/google').subscribe(response => {
       console.log(response);
     });
+  }
+  isLoggedIn() {
+    return this.http.get('/auth/authcheck');
   }
 }
