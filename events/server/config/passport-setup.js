@@ -1,5 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+
 const keys = require('./keys');
 const models = require('../models');
 
@@ -43,3 +45,21 @@ passport.use(new GoogleStrategy({
        
     })
 )   
+
+
+passport.use(new LinkedInStrategy({
+  clientID: keys.linkedin.clientID,
+  clientSecret: keys.linkedin.clientSecret,
+  callbackURL: "/auth/signin-linkedin",
+  scope: ['r_emailaddress', 'r_basicprofile'],
+  state: true
+}, function(accessToken, refreshToken, profile, done) {
+  // asynchronous verification, for effect...
+  process.nextTick(function () {
+    // To keep the example simple, the user's LinkedIn profile is returned to
+    // represent the logged-in user. In a typical application, you would want
+    // to associate the LinkedIn account with a user record in your database,
+    // and return that user instead.
+    return done(null, profile);
+  });
+}));

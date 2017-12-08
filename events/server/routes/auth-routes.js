@@ -30,6 +30,16 @@ router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
     res.redirect('/');
 });
 
+router.get('/linkedin', passport.authenticate('linkedin'),(req,res)=>{
+
+});
+
+router.get('/signin-linkedin', passport.authenticate('linkedin'),(req,res)=>{
+    res.redirect('/');
+});
+
+
+
 
 const authCheck = (req, res, next ) =>{
     if(!req.user){
