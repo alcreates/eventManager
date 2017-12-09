@@ -49,5 +49,11 @@
         position: relative;
         background: rgba(0,0,0,.3);
     }
+    .home_header_title {
+       margin-left: 20px;
+    }
+    .home_header_subtitle {
+        margin-left: 20px;
+    }
     
  }
