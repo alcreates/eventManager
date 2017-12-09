@@ -1,4 +1,4 @@
-<div class="bg-dark" [ngStyle]="{'min-height': clientHeight + 'px'}">
+<div class="bg-dark login_container" [ngStyle]="{'min-height': clientHeight + 'px'}">
 <div class="container py-5">
   <div class="row">
       <div class="col-md-12">
@@ -28,18 +28,56 @@
                                     <span class="custom-control-description small">Remember me on this computer</span>
                                   </label>
                               </div>
-                              <a class="nav-link navItem" routerLink ="/register" >REGISTER</a>
+                              <div style="display:flex;"> <div style="padding-top:10px; font-family: Avenir">need an account?</div> <div><a class="nav-link navItem" routerLink ="/register" >Sign up</a></div> </div>
                               
-                    
                               <button type="button" class="btn btn-success btn-lg float-right">Login</button>
                           </form>
                           
-                      </div>
+                    </div>
                       <!--/card-block-->
-                      <a class="google_login" href="/auth/google"> Google + </a>
-                      <a class="google_login" href="/auth/facebook"> Facebook + </a>
-                      <a class="google_login" href="/auth/linkedin"> LinkedIn + </a>
-                  </div>
+                      <div class="social_title">Or use your favorite</div> 
+                        <div class="social_container">
+                              
+                            <a class="google_login" href="/auth/facebook">  
+                                    <div style="border-radius: 5px;
+                                                background-position: center;
+                                                background-repeat: no-repeat;
+                                                background-size: cover;
+                                                height: 50px;
+                                                width: 50px; 
+                                                background-image: url('/assets/fblogin.png');
+                                                align-self: center;
+                                                ">
+                                    </div>
+                            </a>
+                            <a class="google_login" href="/auth/google"> 
+                                <div style="border-radius: 5px;
+                                            background-position: center;
+                                            background-repeat: no-repeat;
+                                            background-size: cover;
+                                            height: 50px;
+                                            width: 50px; 
+                                            background-image: url('/assets/google.png');
+                                            align-self: center;
+                                            ">
+                                </div>
+                            </a>
+                            
+                            <a class="google_login" href="/auth/linkedin">
+                                <div style="border-radius: 5px;
+                                            background-position: center;
+                                            background-repeat: no-repeat;
+                                            background-size: cover;
+                                            height: 50px;
+                                            width: 50px; 
+                                            background-image: url('/assets/linkedin.png');
+                                            align-self: center;
+                                            ">
+                                </div>
+                            </a>
+                        </div>
+                
+                    </div>
                   <!-- /form card login -->
 
               </div>
