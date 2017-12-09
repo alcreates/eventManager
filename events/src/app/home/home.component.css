@@ -41,3 +41,13 @@
 
 
 
+@media only screen and (max-width: 478px) {
+   
+    .home_header {
+        padding: 11.3875rem calc(50vw - 473px) 4.3875rem;
+        text-align: left;
+        position: relative;
+        background: rgba(0,0,0,.3);
+    }
+    
+ }

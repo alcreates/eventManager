@@ -2,6 +2,7 @@
 .header_button {
     width: 200px;
     height: 50px;
+    margin: auto;
 }
 .header_search {
     background: #23c6a1;
@@ -12,4 +13,31 @@
     font-family: Avenir;
     border-color: #23c6a1;
 }
+.search_panel_container {
+    margin-top: 50px;
+    display:flex;
+    justify-content: center;
+}
+.search_item {
+    display:flex; 
+    justify-content:center;
+}
 
+@media only screen and (max-width: 1000px) {
+   .header_button {
+       width: 80%;
+       margin: 5px;
+   }
+   .header_search {
+       width: 80%;
+       margin: 5px;
+   }
+   .search_panel_container {
+       margin-top: 170px;
+    }
+    .picker {
+       margin-right: -39px;
+       z-index: 9999;
+       cursor: pointer;
+    }
+}
