@@ -19,6 +19,12 @@ router.get('/authcheck',(req, res) =>{
     }
 });
 
+router.get('/login', passport.authenticate('local-signup', 
+                                { successRedirect: '/',
+                                 failureRedirect: '/login',
+                                 failureFlash: true })
+);
+
 
 //auth with google
 router.get('/google', passport.authenticate('google', {
@@ -48,16 +54,6 @@ function(req, res) {
 });
 
 
-
-
-const authCheck = (req, res, next ) =>{
-    if(!req.user){
-        // if user is not logged in.
-        res.redirect('/auth/login');
-    }else {
-        // if they are logged in call next()
-    }
-}
 
 
 module.exports = router;

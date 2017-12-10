@@ -84,3 +84,34 @@ passport.use(new FacebookStrategy({
     return done(null,profile);
   }
 ));
+
+passport.use('local-signup', new LocalStrategy(
+    function(req, email, password, done) {
+
+    // asynchronous
+    // User.findOne wont fire unless data is sent back
+    process.nextTick(function() {
+
+            models.user.findOne({where :{ email : email }}, function(err, user) {
+                // if there are any errors, return the error
+                if (err)
+                    return done(err);
+
+                // check to see if theres already a user with that email
+                if (user) {
+                    return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                } else {
+                //Create user 
+                  bcrypt.hash(password, null, null, function(err, hash) {
+                    models.user.create({email: email, password: hash }).then((user) =>{
+                         return done(null, user);
+                    }); 
+                  });   
+                
+                }
+
+            });    
+
+    });
+
+}));

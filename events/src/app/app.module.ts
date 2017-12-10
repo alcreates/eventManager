@@ -17,6 +17,8 @@ import { UserTypeComponent } from './register/user-type/user-type.component';
 import { PersonalComponent } from './register/user-type/personal/personal.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { CustExtBrowserXhr } from './cust-ext-browser-xhr';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,7 @@ import { CustExtBrowserXhr } from './cust-ext-browser-xhr';
     MatNativeDateModule,
     MatMenuModule,
     HttpModule,
+    FormsModule,
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent},
