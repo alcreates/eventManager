@@ -15,4 +15,13 @@ export class AuthServiceService {
   isLoggedIn() {
     return this.http.get('/auth/authcheck');
   }
+
+  registerPersonal(post) {
+
+    return this.http.post('/auth/signup', post);
+  }
+  login(post){
+    console.log('in login');
+    return this.http.post('/auth/login', post);
+  }
 }

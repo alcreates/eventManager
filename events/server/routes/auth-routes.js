@@ -19,10 +19,11 @@ router.get('/authcheck',(req, res) =>{
     }
 });
 
-router.get('/login', passport.authenticate('local-signup', 
-                                { successRedirect: '/',
-                                 failureRedirect: '/login',
-                                 failureFlash: true })
+router.post('/signup', passport.authenticate('signup', {
+                                    successRedirect: '/',
+                                    failureRedirect: '/',
+                                    failureFlash : true 
+                                })
 );
 
 
@@ -44,8 +45,7 @@ router.get('/signin-linkedin', passport.authenticate('linkedin'),(req,res)=>{
     res.redirect('/');
 });
 
-router.get('/facebook',
-passport.authenticate('facebook'));
+router.get('/facebook', passport.authenticate('facebook'));
 
 router.get('/facebook/redirect',
 passport.authenticate('facebook', {successRedirect : '/', failureRedirect:'/'}),
@@ -53,7 +53,17 @@ function(req, res) {
     res.redirect('/');
 });
 
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/auth/login/redirect',
+    failureRedirect: '/',
+    failureFlash : true 
+}));
 
+// router.get('/login/redirect', (req,res)=>{
+//    console.log('redirect');
+//     res.redirect('http://localhost:3000');
+// });
 
+ 
 
 module.exports = router;

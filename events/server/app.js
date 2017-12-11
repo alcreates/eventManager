@@ -9,6 +9,7 @@ const Sequelize = require('sequelize');
 const models = require('./models');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+const flash = require('connect-flash');
 const authRoutes = require('./routes/auth-routes');
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: [keys.session.cookieKey]
 }));
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());

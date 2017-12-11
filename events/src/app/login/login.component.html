@@ -12,14 +12,15 @@
                           <h3 class="mb-0">Login</h3>
                       </div>
                       <div class="card-body">
-                          <form class="form" role="form" autocomplete="off" id="formLogin">
+                          <form #f="ngForm" class="form" role="form" autocomplete="off" id="formLogin">
+                                
                               <div class="form-group">
-                                  <label for="uname1">Username</label>
-                                  <input type="text" class="form-control form-control-lg rounded-0" name="uname1" id="uname1" required="">
+                                  <label for="username">Username</label>
+                                  <input [(ngModel)]="loginInfo.email" #username ="ngModel" type="text" class="form-control form-control-lg rounded-0" name="username" id="username" >
                               </div>
                               <div class="form-group">
-                                  <label>Password</label>
-                                  <input type="password" class="form-control form-control-lg rounded-0" id="pwd1" required="" autocomplete="new-password">
+                                  <label for="password">Password</label>
+                                  <input [(ngModel)]="loginInfo.password" name="password" #password="ngModel" type="password" class="form-control form-control-lg rounded-0" id="password" required autocomplete="new-password">
                               </div>
                               <div>
                                   <label class="custom-control custom-checkbox">
@@ -30,7 +31,7 @@
                               </div>
                               <div style="display:flex;"> <div style="padding-top:10px; font-family: Avenir">need an account?</div> <div><a class="nav-link navItem" routerLink ="/register" >Sign up</a></div> </div>
                               
-                             <a href="/auth/login"><button type="button" class="btn btn-success btn-lg float-right">Login</button></a>
+                             <button (click)="login()" type="button" class="btn btn-success btn-lg float-right">Login</button>
                           </form>
                           
                     </div>

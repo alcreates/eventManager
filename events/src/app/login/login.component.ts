@@ -1,5 +1,6 @@
 import { AuthServiceService } from './../auth-service.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +10,25 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   clientHeight: number;
+  loginInfo;
   
-  constructor(private auth: AuthServiceService) {
+  constructor(private router: Router, private auth: AuthServiceService) {
         this.clientHeight = window.innerHeight;
+        this.loginInfo = {
+              email: '',
+              password: ''
+        };
   }
   ngOnInit() {
   }
     googleLogin() {
       this.auth.googleLogin();
     }
+
+    login(){
+      console.log('in first login');
+      this.auth.login(this.loginInfo);
+    }
+
 
 }
