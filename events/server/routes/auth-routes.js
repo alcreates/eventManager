@@ -13,9 +13,9 @@ router.get('/logout',(req,res) =>{
 
 router.get('/authcheck',(req, res) =>{
     if(req.user){
-        res.send(true);
+        res.json({auth : true});
     }else{
-        res.send(false);
+        res.json({auth : false});
     }
 });
 

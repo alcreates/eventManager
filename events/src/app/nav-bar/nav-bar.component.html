@@ -23,7 +23,7 @@
         </li>
       </ng-template>
     
-      <li class="nav-item" *ngIf="!isLogged; else logout">
+      <li class="nav-item" *ngIf="!isLogged.auth; else logout">
         <a class="nav-link navItem" routerLink ="/login" >LOG IN</a>
       </li>
       <li class="nav-item">

@@ -9,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
  isLogged = null;
   constructor(private auth: AuthServiceService) {
-    this.auth.isLoggedIn().subscribe(response => {
-       this.isLogged = response.json();
-       console.log(this.isLogged);
+    this.auth.isLoggedIn();
+    this.auth.islogged$.subscribe((response) => {
+        this.isLogged = response;
     });
   }
 
