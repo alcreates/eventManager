@@ -53,12 +53,31 @@ function(req, res) {
     res.redirect('/');
 });
 
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/auth/login/redirect',
-    failureRedirect: '/',
-    failureFlash : true 
-}));
+// router.post('/login', passport.authenticate('local', {
+//     successRedirect: '/',
+//     failureRedirect: '/',
+//     failureFlash : true 
+// }), (req, res)=>{
+//     res.send(req);
+// });
 
+// router.post('/login', passport.authenticate('local',(err,req)=>{
+//     console.log(req);
+//     res.redirect('/');
+    
+// }));
+
+router.post('/login',(req, res, next)=>{
+    passport.authenticate('local', (err, user,info)=>{
+        if (err) { return next(err); }
+        if (!user) { return res.json({auth: false}); }
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            console.log('logged');
+            return res.json({auth : true});
+          });
+    })(req, res, next);
+});
 // router.get('/login/redirect', (req,res)=>{
 //    console.log('redirect');
 //     res.redirect('http://localhost:3000');

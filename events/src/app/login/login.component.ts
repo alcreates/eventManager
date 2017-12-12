@@ -25,9 +25,18 @@ export class LoginComponent implements OnInit {
       this.auth.googleLogin();
     }
 
-    login(){
+    login() {
       console.log('in first login');
-      this.auth.login(this.loginInfo);
+      this.auth.login(this.loginInfo).subscribe(response => {
+          const result = response.json();
+          if (result.auth === true) {
+              this.auth.isLoggedIn();
+              this.router.navigateByUrl('/');
+          }else {
+              this.router.navigateByUrl('/');
+          }
+
+      });
     }
 
 
