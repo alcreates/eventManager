@@ -88,12 +88,10 @@ passport.use(new FacebookStrategy({
 passport.use('signup', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
-    callbackURL: "/auth/login/redirect"   
+    passReqToCallback : true
     },
     function(req, username, password, done) {
-       
-   
-           
+    
         
             models.user.findAll({where :{ email : username }}).then((user) =>{
                     

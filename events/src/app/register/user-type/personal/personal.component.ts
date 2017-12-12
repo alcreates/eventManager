@@ -3,7 +3,7 @@ import { AuthServiceService } from '../../../auth-service.service';
 import { ISubscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-personal',
   templateUrl: './personal.component.html',
@@ -12,7 +12,7 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 export class PersonalComponent implements OnInit, OnDestroy {
   user;
   Subscription: ISubscription;
-  constructor(private auth: AuthServiceService) {
+  constructor(private router: Router, private auth: AuthServiceService) {
 
     this.user = {
       firstName: '',
@@ -42,8 +42,13 @@ export class PersonalComponent implements OnInit, OnDestroy {
     console.log(this.user);
 
     this.Subscription = this.auth.registerPersonal(this.user).subscribe(user => {
-      console.log(user);
-   
+      this.auth.isLoggedIn();
+      const result = user.json();
+      if (result.user === true) {
+          this.router.navigateByUrl('/');
+      }else {
+          this.router.navigateByUrl('/');
+      }
     });
   }
   isNotMatch() {

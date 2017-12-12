@@ -19,12 +19,7 @@ router.get('/authcheck',(req, res) =>{
     }
 });
 
-router.post('/signup', passport.authenticate('signup', {
-                                    successRedirect: '/',
-                                    failureRedirect: '/',
-                                    failureFlash : true 
-                                })
-);
+
 
 
 //auth with google
@@ -53,19 +48,25 @@ function(req, res) {
     res.redirect('/');
 });
 
-// router.post('/login', passport.authenticate('local', {
+// router.post('/signup', passport.authenticate('signup', {
 //     successRedirect: '/',
 //     failureRedirect: '/',
 //     failureFlash : true 
-// }), (req, res)=>{
-//     res.send(req);
-// });
+// })
+// );
 
-// router.post('/login', passport.authenticate('local',(err,req)=>{
-//     console.log(req);
-//     res.redirect('/');
-    
-// }));
+router.post('/signup',(req, res, next)=>(
+    passport.authenticate('signup', (err, user, info)=>{
+        if(err) { return next(err)}
+        if(!user) { return res.json({user : false})}
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            console.log('logged');
+            return res.json({user : true});
+          });
+    })(req, res, next)
+))
+
 
 router.post('/login',(req, res, next)=>{
     passport.authenticate('local', (err, user,info)=>{
@@ -78,10 +79,6 @@ router.post('/login',(req, res, next)=>{
           });
     })(req, res, next);
 });
-// router.get('/login/redirect', (req,res)=>{
-//    console.log('redirect');
-//     res.redirect('http://localhost:3000');
-// });
 
  
 
