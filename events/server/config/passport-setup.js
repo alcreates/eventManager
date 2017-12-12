@@ -20,7 +20,7 @@ passport.deserializeUser((id,done)=>{
 });
 
 passport.use(new GoogleStrategy({
-    //options for google 
+    
     callbackURL: '/auth/google/redirect',
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret 
@@ -72,15 +72,15 @@ passport.use(new FacebookStrategy({
     callbackURL: "/auth/facebook/redirect"
   },
   function(accessToken, refreshToken, profile, done) {
-    // models.user.findOrCreate({where:{
-    //         facebookId: profile.id
-    //        }}).spread((user, created)=>{
-    //               let plainUser = user.get({plain: true});
-    //              return done(null, plainUser);
-    //               console.log(created);
-    //        }).catch((error)=>{
-    //           console.log(error);
-    //        });
+    models.user.findOrCreate({where:{
+            facebookId: profile.id
+           }}).spread((user, created)=>{
+                  let plainUser = user.get({plain: true});
+                 return done(null, plainUser);
+                  console.log(created);
+           }).catch((error)=>{
+              console.log(error);
+           });
     return done(null,profile);
   }
 ));
