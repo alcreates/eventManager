@@ -1,7 +1,22 @@
 const router = require('express').Router();
 const passport = require('passport');
-var multer  = require('multer');
-var upload = multer({ dest: '../../dist/assets' });
+const multer  = require('multer');
+const crypto = require('crypto');
+var path = require('path')
+
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, '../dist/assets')
+    },
+    filename: function (req, file, cb) {
+      crypto.randomBytes(16, function (err, raw) {
+        cb(null, raw.toString('hex') + Date.now() + '.' + path.extname(file.originalname));
+      });
+    }
+  });
+const upload = multer({ storage: storage });
 
 
 
