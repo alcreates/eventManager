@@ -38,7 +38,7 @@ export class VenueComponent implements OnInit {
       const file = event.target.files[0];
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.form.get('avatar').setValue({
+        this.form.get('image').setValue({
           filename: file.name,
           filetype: file.type,
           value: reader.result.split(',')[1]
