@@ -8,9 +8,7 @@
 
                   <!-- form card login -->
                   <div class="card rounded-0">
-                      <div class="card-header">
-                          <h3 class="mb-0">Login</h3>
-                      </div>
+                     
                       <div class="card-body">
                           <form #f="ngForm" class="form" role="form" autocomplete="off" id="formLogin">
                                 
@@ -31,7 +29,7 @@
                               </div>
                               <div style="display:flex;"> <div style="padding-top:10px; font-family: Avenir">need an account?</div> <div><a class="nav-link navItem" routerLink ="/register" >Sign up</a></div> </div>
                               
-                             <button (click)="login()" type="button" class="btn btn-success btn-lg float-right">Login</button>
+                             <button (click)="login()" type="button" class="btn btn-lg float-right local_login_button">Login</button>
                           </form>
                           
                     </div>
@@ -40,42 +38,16 @@
                         <div class="social_container">
                               
                             <a class="google_login" href="/auth/facebook">  
-                                    <div style="border-radius: 5px;
-                                                background-position: center;
-                                                background-repeat: no-repeat;
-                                                background-size: cover;
-                                                height: 50px;
-                                                width: 50px; 
-                                                background-image: url('/assets/fblogin.png');
-                                                align-self: center;
-                                                ">
-                                    </div>
+                                <button class="loginBtn loginBtn--facebook">
+                                        Login with Facebook
+                                 </button>
                             </a>
                             <a class="google_login" href="/auth/google"> 
-                                <div style="border-radius: 5px;
-                                            background-position: center;
-                                            background-repeat: no-repeat;
-                                            background-size: cover;
-                                            height: 50px;
-                                            width: 50px; 
-                                            background-image: url('/assets/google.png');
-                                            align-self: center;
-                                            ">
-                                </div>
+                                <button class="loginBtn loginBtn--google">
+                                        Login with Google
+                                 </button>
                             </a>
                             
-                            <a class="google_login" href="/auth/linkedin">
-                                <div style="border-radius: 5px;
-                                            background-position: center;
-                                            background-repeat: no-repeat;
-                                            background-size: cover;
-                                            height: 50px;
-                                            width: 50px; 
-                                            background-image: url('/assets/linkedin.png');
-                                            align-self: center;
-                                            ">
-                                </div>
-                            </a>
                         </div>
                 
                     </div>
