@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
           this.auth.isLoggedIn();
           const result = response.json();
           if (result.auth === true) {
-              this.router.navigateByUrl('/');
+              this.router.navigateByUrl('/customerdash');
           }else {
               this.router.navigateByUrl('/');
           }

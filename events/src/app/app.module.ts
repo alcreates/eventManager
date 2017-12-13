@@ -17,7 +17,9 @@ import { UserTypeComponent } from './register/user-type/user-type.component';
 import { PersonalComponent } from './register/user-type/personal/personal.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { CustExtBrowserXhr } from './cust-ext-browser-xhr';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
+import { VenueComponent } from './register/user-type/venue/venue.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     UserTypeComponent,
-    PersonalComponent
+    PersonalComponent,
+    CustomerDashboardComponent,
+    VenueComponent
 
   ],
   imports: [
@@ -41,12 +45,15 @@ import { FormsModule } from '@angular/forms';
     MatMenuModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent},
         {path: 'login', component: LoginComponent},
         {path: 'register', component: RegisterComponent},
-        {path: 'register/personal', component: PersonalComponent }
+        {path: 'register/personal', component: PersonalComponent },
+        {path: 'customerdash', component: CustomerDashboardComponent},
+        {path: 'register/venue', component: VenueComponent}
       ]
     )
   ],
