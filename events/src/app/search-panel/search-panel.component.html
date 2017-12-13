@@ -1,7 +1,7 @@
 <div class="search_panel_container row ">
-    <div class="col-sm-6 col-md-6  col-lg-4">
+    <div class="col-sm-6 col-md-6  col-lg-3">
         <div class="search_item">
-                <input matInput class="header_button" [matDatepicker]="picker" placeholder="Choose a date">
+                <input matInput style="margin-right:0" class="header_button" [matDatepicker]="picker" placeholder="Choose a date">
                 <mat-datepicker-toggle  class="picker"   style="color:white;" matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
 
@@ -26,7 +26,7 @@
         </div>
            
     </div>
-    <div class="col-sm-6 col-md-6 col-lg-2">
+    <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="search_item">
                 <button mat-button  class="header_search" >Search</button>
             </div>
