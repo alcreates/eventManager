@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
-
+var multer  = require('multer');
+var upload = multer({ dest: '../../dist/assets' });
 
 
 
@@ -48,12 +49,6 @@ function(req, res) {
     res.redirect('/');
 });
 
-// router.post('/signup', passport.authenticate('signup', {
-//     successRedirect: '/',
-//     failureRedirect: '/',
-//     failureFlash : true 
-// })
-// );
 
 router.post('/signup',(req, res, next)=>(
     passport.authenticate('signup', (err, user, info)=>{
@@ -66,6 +61,21 @@ router.post('/signup',(req, res, next)=>(
           });
     })(req, res, next)
 ))
+
+router.post('/venue-signup',upload.single('image'),(req, res, next)=>(
+    passport.authenticate('venue-signup',(err, user, info)=>{
+       console.log(user ,"in venue auth")
+        if(err) { return next(err)}
+        if(!user) { return res.json({user : false})}
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            console.log('logged');
+            return res.json({user : true});
+          });
+    })(req, res, next)
+))
+
+
 
 
 router.post('/login',(req, res, next)=>{

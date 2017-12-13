@@ -1,9 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define('venue', {
-        name: {
+    const Venue = sequelize.define('venue', {
+        venueName: {
           type: DataTypes.STRING          
         },
-        phoneNumber: {
+        firstName: {
+            type: DataTypes.STRING          
+        },
+        lastName: {
+            type: DataTypes.STRING          
+        },
+        phone: {
           type: DataTypes.STRING  
         },
         streetAddress: {
@@ -31,8 +37,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         linkedInId: {
             type:  DataTypes.STRING
+        },
+        type : {
+            type:  DataTypes.STRING
         }
+        
       })
 
-      return User;
+      return Venue;
     }
