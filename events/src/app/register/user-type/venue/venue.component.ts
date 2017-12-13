@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthServiceService } from './../../../auth-service.service';
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
@@ -11,7 +13,7 @@ export class VenueComponent implements OnInit {
   loading = false;
   @ViewChild('fileInput') fileInput: ElementRef;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private router: Router, private fb: FormBuilder, private auth: AuthServiceService) {
       this.createForm();
    }
 
@@ -25,6 +27,7 @@ export class VenueComponent implements OnInit {
       venueName: ['', Validators.required],
       streetAddress: '',
       zipCode: '',
+      email: '',
       phone: '',
       password: '',
       confirmPassword: '',
@@ -33,30 +36,44 @@ export class VenueComponent implements OnInit {
   }
 
   onFileChange(event) {
-    const reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) {
+    if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.form.get('avatar').setValue({
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        });
-      };
+      this.form.get('image').setValue(file);
     }
   }
 
+  private prepareSave(): any {
+    const input = new FormData();
+    
+    input.append('firstName', this.form.get('firstName').value);
+    input.append('lastName', this.form.get('lastName').value);
+    input.append('venueName', this.form.get('venueName').value);
+    input.append('streetAddress', this.form.get('streetAddress').value);
+    input.append('zipCode', this.form.get('zipCode').value);
+    input.append('image', this.form.get('image').value);
+    input.append('phone', this.form.get('phone').value);
+    input.append('password', this.form.get('password').value);
+    input.append('email', this.form.get('email').value);
+    return input;
+  }
+
   onSubmit() {
-    const formModel = this.form.value;
+    const formModel = this.prepareSave();
     this.loading = true;
-    // In a real-world app you'd have a http request / service call here like
-    // this.http.post('apiUrl', formModel)
-    setTimeout(() => {
       console.log(formModel);
-      alert('done!');
-      this.loading = false;
-    }, 1000);
+
+    this.auth.registerVenue(formModel).subscribe(user => {
+      this.auth.isLoggedIn();
+      console.log(user, 'client side user');
+      const result = user.json();
+      if (result.user === true) {
+          this.loading = false;
+          this.router.navigateByUrl('/');
+      }else {
+          this.loading = false;
+          this.router.navigateByUrl('/');
+      }
+    });
   }
 
   clearFile() {

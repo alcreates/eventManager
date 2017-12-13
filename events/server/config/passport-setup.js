@@ -6,16 +6,29 @@ const LocalStrategy = require('passport-local').Strategy;
 const keys = require('./keys');
 const models = require('../models');
 const bcrypt = require("bcrypt-nodejs");
+
+
+
 passport.serializeUser((user,done)=>{
     //get user id from db.
-    done(null,user.id);
+    console.log(user.type, "user typppppeeee11111");
+    done(null,{ id : user.id, type: user.type });
 });
 
-passport.deserializeUser((id,done)=>{
+passport.deserializeUser((user,done)=>{
     //call db to find user id;
-    models.user.findAll({where:{id: id }}).then((user)=>{
-        done(null,user);
-    });
+   if(user.type == 'personal'){
+            models.user.findAll({where:{id: user.id }}).then((user)=>{
+                done(null,user);
+            });
+   }else{ 
+       
+            models.venue.findAll({where:{id: user.id }}).then((user)=>{
+                done(null,user);
+            });
+    }
+  
+   
     
 });
 
@@ -159,4 +172,47 @@ passport.use(new LocalStrategy({
  });
 }));
 
- 
+passport.use('venue-signup',new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback : true
+    },
+    function(req, username, password, done) {
+        console.log('in venue sign up');
+        console.log(username, 'in venue user name ');
+        console.log(req, "this is reeeeqqqqqq");
+        console.log(req.body, "this is req boooooddddyyyy");
+        
+            // models.venue.findAll({where :{ email : username }}).then((venue) =>{    
+                
+            //     console.log(venue, "venueeeeee");
+            //     console.log('in model');
+                    
+            //         if(venue.length > 0){
+            //             return done(null, false, 
+            //                 req.flash('message','User Already Exists'));
+            //         }else{
+                         
+
+            //               bcrypt.hash(password, null, null, function(err, hash) {
+            //                     models.venue.create({
+            //                         email: req.body.email, 
+            //                         password: hash, 
+            //                         firstName: req.body.firstName,
+            //                         lastName: req.body.lastName,
+            //                         venueName: req.body.venueName,
+            //                         streetAddress: req.body.streetAddress ,
+            //                         state: req.body.state ,
+            //                         zipCode: req.body.zipcode,
+            //                         phoneNumber:req.body.phoneNumber, 
+            //                         image: req.body.image.filename }).then((user) =>{
+                                    
+            //                         return done(null, venue);
+            //                     }); 
+            //                });   
+            //         }
+            
+            
+            // });
+
+}));

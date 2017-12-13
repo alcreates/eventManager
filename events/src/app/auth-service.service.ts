@@ -13,12 +13,12 @@ export class AuthServiceService {
 
   googleLogin() {
     this.http.get('/auth/google').subscribe(response => {
-     
+
     });
   }
   isLoggedIn() {
      this.http.get('/auth/authcheck').subscribe((response) => {
-  
+
       this.messageSource.next(response.json());
     });
   }
@@ -26,6 +26,9 @@ export class AuthServiceService {
   registerPersonal(post) {
 
     return this.http.post('/auth/signup', post);
+  }
+  registerVenue(post) {
+    return this.http.post('/auth/venue-signup', post);
   }
   login(post) {
     return this.http.post('/auth/login', post);
