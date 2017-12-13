@@ -56,6 +56,6 @@ export class PersonalComponent implements OnInit, OnDestroy {
         return true;
     }
   }
-  
+
 
 }
