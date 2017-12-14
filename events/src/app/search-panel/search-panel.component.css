@@ -3,6 +3,13 @@
     width: 200px;
     height: 50px;
     margin: auto;
+    font-family:Avenir; 
+    border-color: white;
+    text-align: center;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: transparent !important;
 }
 .header_search {
     background: #23c6a1;
@@ -23,6 +30,7 @@
     justify-content:center;
     
 }
+
 
 @media only screen and (max-width: 1000px) {
    .header_button {

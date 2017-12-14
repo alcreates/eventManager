@@ -1,9 +1,10 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserXhr, HttpModule } from '@angular/http';
 import { AuthServiceService } from './auth-service.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule } from '@angular/material';
+import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatSelectModule } from '@angular/material';
 import {MatMenuModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -20,6 +21,7 @@ import { CustExtBrowserXhr } from './cust-ext-browser-xhr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
 import { VenueComponent } from './register/user-type/venue/venue.component';
+
 
 @NgModule({
   declarations: [
@@ -43,8 +45,10 @@ import { VenueComponent } from './register/user-type/venue/venue.component';
     MatFormFieldModule,
     MatNativeDateModule,
     MatMenuModule,
+    MatSelectModule,
     HttpModule,
     FormsModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(
       [
