@@ -178,41 +178,38 @@ passport.use('venue-signup',new LocalStrategy({
     passReqToCallback : true
     },
     function(req, username, password, done) {
-        console.log('in venue sign up');
-        console.log(username, 'in venue user name ');
-        console.log(req, "this is reeeeqqqqqq");
-        console.log(req.body, "this is req boooooddddyyyy");
-        
-            // models.venue.findAll({where :{ email : username }}).then((venue) =>{    
-                
-            //     console.log(venue, "venueeeeee");
-            //     console.log('in model');
+        console.log(username);
+        console.log(req.file.filename, "this is req");
+
+          
+             models.venue.findOne({where :{ email : username }}).then((venue) =>{    
+                 
                     
-            //         if(venue.length > 0){
-            //             return done(null, false, 
-            //                 req.flash('message','User Already Exists'));
-            //         }else{
+                    if(venue){
+                        return done(null, false, 
+                            req.flash('message','User Already Exists'));
+                    }else{
                          
 
-            //               bcrypt.hash(password, null, null, function(err, hash) {
-            //                     models.venue.create({
-            //                         email: req.body.email, 
-            //                         password: hash, 
-            //                         firstName: req.body.firstName,
-            //                         lastName: req.body.lastName,
-            //                         venueName: req.body.venueName,
-            //                         streetAddress: req.body.streetAddress ,
-            //                         state: req.body.state ,
-            //                         zipCode: req.body.zipcode,
-            //                         phoneNumber:req.body.phoneNumber, 
-            //                         image: req.body.image.filename }).then((user) =>{
+                          bcrypt.hash(password, null, null, function(err, hash) {
+                                models.venue.create({
+                                    email: req.body.email, 
+                                    password: hash, 
+                                    firstName: req.body.firstName,
+                                    lastName: req.body.lastName,
+                                    venueName: req.body.venueName,
+                                    streetAddress: req.body.streetAddress ,
+                                    state: req.body.state ,
+                                    zipCode: req.body.zipcode,
+                                    phoneNumber:req.body.phoneNumber, 
+                                    image: req.file.filename }).then((venue) =>{
                                     
-            //                         return done(null, venue);
-            //                     }); 
-            //                });   
-            //         }
+                                    return done(null, venue);
+                                }); 
+                           });   
+                    }
             
             
-            // });
+            });
 
 }));

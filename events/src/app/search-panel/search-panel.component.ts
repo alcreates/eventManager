@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-panel.component.css']
 })
 export class SearchPanelComponent implements OnInit {
-
-  constructor() { }
+  myState = 'NY';
+  states = [{code: 'NY', name: 'New York City'}, {code: 'NJ', name: 'New Jersey'}, {code: 'Conn', name: 'Connecticut'}];
+  constructor() {
+  }
 
   ngOnInit() {
   }
