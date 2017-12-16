@@ -6,6 +6,8 @@
 <!-- <div style="margin-top: 20px;" class="col-lg-4 col-md-6 col-sm-12" *ngFor="let p of filteredProducts">
                 <product-card [product]="p" [inProductPage]="true" [shopping-cart]="cart"></product-card>
               </div> -->
-<div class="row justify-content-center " style="margin-bottom: 50px;" *ngFor="let venue of venues">
-    <venuecard [venueInfo]="venue"></venuecard>
+<div class="row justify-content-center " style="margin-bottom: 50px;" >
+   <div class="col-sm-12 col-lg-4" *ngFor="let venue of venues">
+        <venuecard [venueInfo]="venue"></venuecard>
+    </div>
 </div>  

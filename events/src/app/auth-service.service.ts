@@ -22,6 +22,12 @@ export class AuthServiceService {
       this.messageSource.next(response.json());
     });
   }
+  logOut(){
+    console.log("in auth log out");
+    this.http.get('http://localhost:3000/auth/logout').subscribe(response =>{
+       console.log('logged out');
+    });
+  }
 
   registerPersonal(post) {
 

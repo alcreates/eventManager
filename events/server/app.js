@@ -36,17 +36,17 @@ app.use(function(req, res, next) { //allow cross origin requests
 });
 
 // Point static path to dist
-app.use(express.static(path.join(__dirname, '../public')));
-
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, '/public')))
 
 app.use('/auth', authRoutes);
 app.use('/venue', venueRoutes);
   
 
-  app.get('*', (req, res) => {
-    //res.sendFile(path.join(__dirname, './public/index.html'));
-    redirect("http://localhost:4200");
-});
+// app.get('*', (req, res) => {
+//     //res.sendFile(path.join(__dirname, './public/index.html'));
+//     redirect("http://localhost:4200");
+// });
 
 
 /**

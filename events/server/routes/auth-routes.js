@@ -8,7 +8,7 @@ var path = require('path')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '../dist/assets')
+      cb(null, './public/images')
     },
     filename: function (req, file, cb) {
       crypto.randomBytes(16, function (err, raw) {
@@ -23,8 +23,10 @@ const upload = multer({ storage: storage });
 //auth logout
 
 router.get('/logout',(req,res) =>{
+    console.log("logout");
     req.logout();
-    res.redirect('/');
+    //res.redirect('/');
+    res.send("logged out");
 });
 
 router.get('/authcheck',(req, res) =>{
