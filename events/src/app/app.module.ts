@@ -21,6 +21,7 @@ import { CustExtBrowserXhr } from './cust-ext-browser-xhr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
 import { VenueComponent } from './register/user-type/venue/venue.component';
+import { VenueLoginComponent } from './venue-login/venue-login.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { VenueComponent } from './register/user-type/venue/venue.component';
     UserTypeComponent,
     PersonalComponent,
     CustomerDashboardComponent,
-    VenueComponent
+    VenueComponent,
+    VenueLoginComponent
 
   ],
   imports: [
@@ -57,7 +59,9 @@ import { VenueComponent } from './register/user-type/venue/venue.component';
         {path: 'register', component: RegisterComponent},
         {path: 'register/personal', component: PersonalComponent },
         {path: 'customerdash', component: CustomerDashboardComponent},
-        {path: 'register/venue', component: VenueComponent}
+        {path: 'register/venue', component: VenueComponent},
+        {path: 'userType', component: UserTypeComponent},
+        {path: 'venue/login', component: VenueLoginComponent}
       ]
     )
   ],

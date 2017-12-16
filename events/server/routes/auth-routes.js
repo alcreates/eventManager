@@ -105,6 +105,18 @@ router.post('/login',(req, res, next)=>{
     })(req, res, next);
 });
 
+router.post('/venue_login',(req, res, next)=>{
+    passport.authenticate('local-venue', (err, user,info)=>{
+        if (err) { return next(err); }
+        if (!user) { return res.json({auth: false}); }
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            console.log('logged');
+            return res.json({auth : true});
+          });
+    })(req, res, next);
+});
+
  
 
 module.exports = router;

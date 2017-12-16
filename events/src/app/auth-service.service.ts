@@ -33,4 +33,7 @@ export class AuthServiceService {
   login(post) {
     return this.http.post('/auth/login', post);
   }
+  venueLogin(post) {
+    return this.http.post('/auth/venue_login', post);
+  }
 }
