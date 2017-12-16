@@ -2,41 +2,10 @@
     <div class="col-6"><h2 class="featuredVenuesTitle">Featured venues</h2></div>
     <div class="col-6"><span class="seeMore">see all venues ></span></div>
 </div> 
-<div class="row justify-content-center " style="margin-bottom: 50px;">
-    <div class="col-sm-12 col-lg-4">
-            <div class="card" >
-                    <div style="background-image: url('https://static1.squarespace.com/static/5639ae74e4b0938162bc0540/565c8c4ee4b0f33a7ae9ac84/565c8c4fe4b0f33a7ae9ac88/1448906304945/WineRoom01.jpg?format=750w');
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    height: 200px; "></div>
-                    <div class="card-body">
-                      <p class="card-text">Whether you’re in search of a private space for a business function, family event, or just a special dinner out with friends, Fiorino has the right solution for your private dining needs.</p>
-                    </div>
-            </div>
-    </div>
-    <div class="col-sm-12 col-lg-4">
-            <div class="card" >
-                    <div style="background-image: url('http://ovationsrestaurant.com/sites/sow/files/gallery/DSC_0025.jpg');
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    height: 200px; "> </div>
-                    <div class="card-body">
-                      <p class="card-text">In the heart of South Bound Brook, Ovations serves a unique culinary fusion featuring sumptuous Asian and Italian cuisines in its relaxing and friendly eatery.</p>
-                    </div>
-                  </div>
-    </div>
-    <div class="col-sm-12 col-lg-4">
-            <div class="card" >
-                    <div style="background-image: url('https://resizer.otstatic.com/v2/photos/large/25113824.jpg');
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    height: 200px; "></div>
-                    <div class="card-body">
-                      <p class="card-text">Summit House offers elegant cuisine inspired by the Garden State's diverse edible bounty -- served in a warm, community-focused atmosphere. </p>
-                    </div>
-            </div>
-    </div>
+<!-- example -->
+<!-- <div style="margin-top: 20px;" class="col-lg-4 col-md-6 col-sm-12" *ngFor="let p of filteredProducts">
+                <product-card [product]="p" [inProductPage]="true" [shopping-cart]="cart"></product-card>
+              </div> -->
+<div class="row justify-content-center " style="margin-bottom: 50px;" *ngFor="let venue of venues">
+    <venuecard [venueInfo]="venue"></venuecard>
 </div>  

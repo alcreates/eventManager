@@ -12,3 +12,6 @@
     color:white;
     font-family: Avenir;
 }
+.list_group_item {
+    cursor: pointer;
+}

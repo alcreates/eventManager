@@ -1,3 +1,4 @@
+import { VenueService } from './../venue.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./featured-venues.component.css']
 })
 export class FeaturedVenuesComponent implements OnInit {
-
-  constructor() { }
+  venues;
+  constructor(private auth: VenueService) {
+    this.auth.getFeatured().subscribe(venues => {
+        this.venues = venues.json();
+        console.log(this.venues);
+    });
+  }
 
   ngOnInit() {
   }

@@ -1,3 +1,4 @@
+import { VenueService } from './venue.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserXhr, HttpModule } from '@angular/http';
 import { AuthServiceService } from './auth-service.service';
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
 import { VenueComponent } from './register/user-type/venue/venue.component';
 import { VenueLoginComponent } from './venue-login/venue-login.component';
+import { VenuecardComponent } from './venuecard/venuecard.component';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { VenueLoginComponent } from './venue-login/venue-login.component';
     PersonalComponent,
     CustomerDashboardComponent,
     VenueComponent,
-    VenueLoginComponent
+    VenueLoginComponent,
+    VenuecardComponent
 
   ],
   imports: [
@@ -67,6 +70,7 @@ import { VenueLoginComponent } from './venue-login/venue-login.component';
   ],
   providers: [
     AuthServiceService,
+    VenueService,
     {provide: BrowserXhr, useClass: CustExtBrowserXhr},
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
