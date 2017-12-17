@@ -1,0 +1,32 @@
+.search_container {
+    display:flex;
+}
+
+.event_details_title {
+    color: #23c6a1;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: .015em;
+    text-transform: uppercase;
+    margin-bottom: .625rem;
+    font-family: Avenir;
+}
+.top_search_fields {
+    display:flex;
+}
+.header_button {
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    font-family:Avenir; 
+    border-color: white;
+    text-align: center;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: transparent !important;
+}
+
+mat-form-field.mat-form-field {
+    margin-right: 20px;
+}

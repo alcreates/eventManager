@@ -5,7 +5,7 @@ import { AuthServiceService } from './auth-service.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatSelectModule } from '@angular/material';
+import { MatInputModule,MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatSelectModule } from '@angular/material';
 import {MatMenuModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -24,6 +24,7 @@ import { CustomerDashboardComponent } from './customer-dashboard/customer-dashbo
 import { VenueComponent } from './register/user-type/venue/venue.component';
 import { VenueLoginComponent } from './venue-login/venue-login.component';
 import { VenuecardComponent } from './venuecard/venuecard.component';
+import { CustomerDashSearchComponent } from './customer-dash-search/customer-dash-search.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { VenuecardComponent } from './venuecard/venuecard.component';
     CustomerDashboardComponent,
     VenueComponent,
     VenueLoginComponent,
-    VenuecardComponent
+    VenuecardComponent,
+    CustomerDashSearchComponent
 
   ],
   imports: [
@@ -50,6 +52,7 @@ import { VenuecardComponent } from './venuecard/venuecard.component';
     MatFormFieldModule,
     MatNativeDateModule,
     MatMenuModule,
+   
     MatSelectModule,
     HttpModule,
     FormsModule,
