@@ -52,7 +52,7 @@ import { CustomerDashSearchComponent } from './customer-dash-search/customer-das
     MatFormFieldModule,
     MatNativeDateModule,
     MatMenuModule,
-   
+    MatInputModule,
     MatSelectModule,
     HttpModule,
     FormsModule,
