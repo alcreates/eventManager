@@ -26,6 +26,8 @@ import { VenueLoginComponent } from './venue-login/venue-login.component';
 import { VenuecardComponent } from './venuecard/venuecard.component';
 import { CustomerDashSearchComponent } from './customer-dash-search/customer-dash-search.component';
 import {MatCheckboxModule} from '@angular/material';
+import {MatSliderModule} from '@angular/material';
+
 
 
 @NgModule({
@@ -60,6 +62,7 @@ import {MatCheckboxModule} from '@angular/material';
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    MatSliderModule,
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent},
