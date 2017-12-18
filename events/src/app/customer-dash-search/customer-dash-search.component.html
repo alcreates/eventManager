@@ -74,8 +74,11 @@
       </div>
 
        <div style="margin-top:20px;" class="row">
-          <div class="col-lg-12">    
+          <div class="col-lg-6">    
                   <h2 class="event_details_title">Price</h2>
+          </div>
+          <div class="col-lg-6">    
+                  <h2 class="event_details_title">Place</h2>
           </div>
       </div>
       <div class="row">
@@ -102,7 +105,7 @@
                                 </mat-select>
                             </mat-form-field>
                     </div>
-                    <div>
+                    <div style="width:234px;">
                             <p class="search_labels">Budget</p>
                            
                                 <mat-slider #slider
@@ -116,11 +119,43 @@
                                 {{"$ " + slider.value}}
                             
                     </div>
-                
-                
-                
-                
-                
+                    <div>
+                            <p style="margin-left: 20px;" class="search_labels">Location & Venue Details</p>
+
+                            <mat-form-field style="margin-left: 20px;">
+                                 <!-- [formControl]="toppings" -->
+                                <mat-select placeholder="Neighborhood"  multiple>
+                                    <mat-option value="babyShower">Baby Shower</mat-option>
+                                    <mat-option value="wedding">Wedding</mat-option>
+                                    <mat-option value="batbisvah">Batmisvah</mat-option>
+                                    <!-- [value]="topping"
+                                    *ngFor="let topping of toppingList"  -->
+                                </mat-select>
+                            </mat-form-field> 
+                            <mat-form-field>
+                                 <!-- [formControl]="toppings" -->
+                                <mat-select placeholder="Venue Type"  multiple>
+                                    <mat-option value="babyShower">Baby Shower</mat-option>
+                                    <mat-option value="wedding">Wedding</mat-option>
+                                    <mat-option value="batbisvah">Batmisvah</mat-option>
+                                    <!-- [value]="topping"
+                                    *ngFor="let topping of toppingList"  -->
+                                </mat-select>
+                            </mat-form-field> 
+                            <mat-form-field>
+                                 <!-- [formControl]="toppings" -->
+                                <mat-select placeholder="Amenities"  multiple>
+                                    <mat-option value="babyShower">Baby Shower</mat-option>
+                                    <mat-option value="wedding">Wedding</mat-option>
+                                    <mat-option value="batbisvah">Batmisvah</mat-option>
+                                    <!-- [value]="topping"
+                                    *ngFor="let topping of toppingList"  -->
+                                </mat-select>
+                            </mat-form-field> 
+
+                    
+                    </div>
+        
                 </div>
 
           </div>
