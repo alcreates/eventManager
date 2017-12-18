@@ -19,12 +19,12 @@
       </li>
       <ng-template #logout>
         <li>
-          <a class="nav-link navItem" href="/auth/logout" >LOG OUT</a>
+          <button style="border-color:white;" class="nav-link navItem" (click)="logOut()" >LOG OUT</button>
         </li>
       </ng-template>
     
       <li class="nav-item" *ngIf="!isLogged.auth; else logout">
-        <a class="nav-link navItem" routerLink ="/login" >LOG IN</a>
+        <a class="nav-link navItem" routerLink ="/userType" >LOG IN</a>
       </li>
       <li class="nav-item">
           <a class="nav-link navItem" href="#">LIST YOUR VENUE</a>

@@ -11,7 +11,6 @@ const bcrypt = require("bcrypt-nodejs");
 
 passport.serializeUser((user,done)=>{
     //get user id from db.
-    console.log(user.type, "user typppppeeee11111");
     done(null,{ id : user.id, type: user.type });
 });
 
@@ -179,7 +178,7 @@ passport.use('venue-signup',new LocalStrategy({
     },
     function(req, username, password, done) {
         console.log(username);
-        console.log(req.file.filename, "this is req");
+        console.log(req.file, "this is file ---- ");
 
           
              models.venue.findOne({where :{ email : username }}).then((venue) =>{    
@@ -212,4 +211,38 @@ passport.use('venue-signup',new LocalStrategy({
             
             });
 
+}));
+
+passport.use('venue-login',new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback : true
+
+  },
+  function(req, username, password, done) { 
+      
+
+    process.nextTick(function () {
+    models.venue.findOne({ email :  username }).then((venue, err )=> {
+       
+         
+            if (err)
+            return done(err);
+            
+           
+            if ( !venue){
+               
+                return done(null, false, 
+                    req.flash('message', 'User Not found.'));                 
+            }
+           
+            if (!isValidPassword(venue, password)){
+              
+                return done(null, false, 
+                    req.flash('message', 'Invalid Password'));
+            }
+           
+            return done(null, venue);
+    });
+ });
 }));

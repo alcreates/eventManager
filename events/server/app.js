@@ -11,6 +11,8 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const flash = require('connect-flash');
 const authRoutes = require('./routes/auth-routes');
+const venueRoutes = require('./routes/venue-routes');
+const cors = require('cors');
 
 const app = express();
 
@@ -25,15 +27,26 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(function(req, res, next) { //allow cross origin requests
+    res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
+    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Credentials", true);
+    next();
+});
+
 // Point static path to dist
-app.use(express.static(path.join(__dirname, '../dist')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, '/public')))
 
 app.use('/auth', authRoutes);
+app.use('/venue', venueRoutes);
   
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
+// app.get('*', (req, res) => {
+//     //res.sendFile(path.join(__dirname, './public/index.html'));
+//     redirect("http://localhost:4200");
+// });
 
 
 /**

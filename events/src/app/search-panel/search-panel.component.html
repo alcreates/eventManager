@@ -12,24 +12,28 @@
     </div>
     <div class="col-sm-6 col-md-6 col-lg-3">
        
-        <div class="search_item">
-                <input matInput style="margin-right:0; font-family:Avenir; text-align: center;" class="header_button" [matDatepicker]="picker" placeholder="Choose a date">
-                <mat-datepicker-toggle  class="picker"   style="color:white;" matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+        <div class="search_item" style="background-color:white; height: 52px">
+                <mat-form-field>
+                        <input matInput style="margin-right:0; font-family:Avenir; text-align: center;" class="" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" [matDatepicker]="picker" placeholder="Choose a date">
+                        <mat-datepicker-toggle  class="picker"   style="color:black;" matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
 
         </div>
     </div>
     <div class="col-sm-6 col-md-6 col-lg-3">
        
-        <div class="search_item" >
+        <div class="search_item" style="background-color:white; height: 52px" >
                 <!-- <button class="header_button" mat-button [matMenuTriggerFor]="menu">Guests</button> -->
-                <input matInput class="header_button" placeholder="Guest">
+                <mat-form-field>
+                        <input matInput [(ngModel)]="numberOfGuest"  placeholder="Guest">
+                </mat-form-field>
         </div>
            
     </div>
     <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="search_item">
-                <button mat-button  class="header_search" >Search</button>
+                <button mat-button (click)="submitSearch()" class="header_search" >Search</button>
             </div>
     </div>
 </div>

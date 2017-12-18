@@ -6,10 +6,18 @@
     font-family:Avenir; 
     border-color: white;
     text-align: center;
-    border-top: transparent !important;
+    background-color:white;
+    /* border-top: transparent !important;
     border-left: transparent !important;
     border-right: transparent !important;
-    border-bottom: transparent !important;
+    border-bottom: transparent !important; */
+}
+/* .mat-input-placeholder {
+    
+} */
+.mat-form-field-flex {
+    text-align:center;
+    background-color:white;
 }
 .header_search {
     background: #23c6a1;
