@@ -27,6 +27,8 @@ import { VenuecardComponent } from './venuecard/venuecard.component';
 import { CustomerDashSearchComponent } from './customer-dash-search/customer-dash-search.component';
 import {MatCheckboxModule} from '@angular/material';
 import {MatSliderModule} from '@angular/material';
+import { CustomerDashResultsComponent } from './customer-dash-results/customer-dash-results.component';
+import { CustomerDashMapComponent } from './customer-dash-map/customer-dash-map.component';
 
 
 
@@ -46,7 +48,9 @@ import {MatSliderModule} from '@angular/material';
     VenueComponent,
     VenueLoginComponent,
     VenuecardComponent,
-    CustomerDashSearchComponent
+    CustomerDashSearchComponent,
+    CustomerDashResultsComponent,
+    CustomerDashMapComponent
 
   ],
   imports: [
