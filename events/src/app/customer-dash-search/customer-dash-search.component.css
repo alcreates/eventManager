@@ -26,7 +26,15 @@
     border-right: transparent !important;
     border-bottom: transparent !important;
 }
+.search_labels {
+    font-weight: 700;
+    letter-spacing: .01428em;
+    font-size: .875rem;
+    margin-bottom: 1.125rem;
+    font-family: Avenir;
+}
 
 mat-form-field.mat-form-field {
     margin-right: 20px;
+    width:140px;
 }

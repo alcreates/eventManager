@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-12">
 
@@ -7,33 +8,73 @@
                   <h2 class="event_details_title">Event Details</h2>
           </div>
       </div>
+      
 
       <div class="row">
           <div class="col">
             <div class="top_search_fields">
-                
+                <div>
+                    <p class="search_labels">Your Event</p>
+                    <mat-form-field>
+                        <mat-select placeholder="Location">
+                        <mat-option value="option">NYC</mat-option>
+                        <mat-option value="option">NJ</mat-option>
+                        <mat-option value="option">Conn</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                 <p class="search_labels">Date, time, Duration</p>
                 <mat-form-field>
-                    <mat-select placeholder="Location">
-                      <mat-option value="option">NYC</mat-option>
-                      <mat-option value="option">NJ</mat-option>
-                      <mat-option value="option">Conn</mat-option>
-                    </mat-select>
+                    <input matInput placeholder="Guest">
                 </mat-form-field>
                 
-              
-                    <input matInput placeholder="Guest">
-               
+                 <mat-form-field style="height:52px; background-color:white;">
+                        <input matInput style="margin-right:0; font-family:Avenir; text-align: center;" class="" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" [matDatepicker]="picker" placeholder="Choose a date">
+                        <mat-datepicker-toggle  class="picker"   style="color:black;" matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
 
-                <!-- <input matInput style="margin-right:0; font-family:Avenir; text-align: center;" class="header_button" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" [matDatepicker]="picker" placeholder="Choose a date">
-                <mat-datepicker-toggle  class="picker"   style="color:white;" matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker> -->
-                
+                <mat-form-field>
+                    <mat-select placeholder="Time">
+                      <mat-option value="option">12:00 am</mat-option>
+                      <mat-option value="option">12:15 am</mat-option>
+                      <mat-option value="option">12:30 am</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                 <mat-form-field>
+                    <mat-select placeholder="Duration">
+                      <mat-option value="option">0:30 minutes</mat-option>
+                      <mat-option value="option">01:00 hour</mat-option>
+                      <mat-option value="option">01:30 hour</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                <!-- [formControl]="toppings" -->
+                        <mat-select placeholder="Type"  multiple>
+                            <mat-option value="babyShower">Baby Shower</mat-option>
+                            <mat-option value="wedding">Wedding</mat-option>
+                            <mat-option value="batbisvah">Batmisvah</mat-option>
+                            <!-- [value]="topping"
+                             *ngFor="let topping of toppingList"  -->
+                        </mat-select>
+                </mat-form-field> 
+                </div> 
+                <div>
+                    <p class="search_labels">Private Space</p>
+                    
+                    <div style="margin-top: 40px; margin-left: 20px; ">
+                        <mat-checkbox style="font-family: Avenir;">yes</mat-checkbox>
+                    </div>
+                </div> 
             </div>
-          </div>
+        </div>
       </div>
   
   
-  </div>
+    </div>
 </div>
 
   

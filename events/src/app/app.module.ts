@@ -25,6 +25,7 @@ import { VenueComponent } from './register/user-type/venue/venue.component';
 import { VenueLoginComponent } from './venue-login/venue-login.component';
 import { VenuecardComponent } from './venuecard/venuecard.component';
 import { CustomerDashSearchComponent } from './customer-dash-search/customer-dash-search.component';
+import {MatCheckboxModule} from '@angular/material';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { CustomerDashSearchComponent } from './customer-dash-search/customer-das
     MatMenuModule,
     MatInputModule,
     MatSelectModule,
+    MatCheckboxModule,
     HttpModule,
     FormsModule,
     BrowserAnimationsModule,
