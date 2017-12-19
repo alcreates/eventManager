@@ -12,6 +12,7 @@ export class CustomerVenueDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute) { 
    
     this.venueInfo = this.route.snapshot.params;
+    console.log(this.venueInfo);
   }
 
   ngOnInit() {
