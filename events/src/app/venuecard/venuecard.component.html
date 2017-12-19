@@ -1,5 +1,5 @@
 
-    <div class="card" >
+    <div class="card" (click)="venueDetails()" >
             <div class="venueImage" [style.backgroundImage]="'url(http://localhost:3000/public/images/' + venueInfo.image + ')'" ></div>
             <div class="card-body">
               <p>{{venueInfo.venueName}}</p>

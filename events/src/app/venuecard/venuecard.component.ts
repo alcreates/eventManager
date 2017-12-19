@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,9 +19,13 @@ export class VenuecardComponent implements OnInit {
   // @Input('inProductPage') inProductPage = true;
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  venueDetails(){
+    this.router.navigate(['venue/details', this.venueInfo]);
   }
 
 }

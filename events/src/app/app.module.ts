@@ -30,6 +30,7 @@ import {MatSliderModule} from '@angular/material';
 import { CustomerDashResultsComponent } from './customer-dash-results/customer-dash-results.component';
 import { CustomerDashMapComponent } from './customer-dash-map/customer-dash-map.component';
 import { AgmCoreModule } from '@agm/core';
+import { CustomerVenueDetailsComponent } from './customer-venue-details/customer-venue-details.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { AgmCoreModule } from '@agm/core';
     VenuecardComponent,
     CustomerDashSearchComponent,
     CustomerDashResultsComponent,
-    CustomerDashMapComponent
+    CustomerDashMapComponent,
+    CustomerVenueDetailsComponent
 
   ],
   imports: [
@@ -79,7 +81,8 @@ import { AgmCoreModule } from '@agm/core';
         {path: 'customerdash', component: CustomerDashboardComponent},
         {path: 'register/venue', component: VenueComponent},
         {path: 'userType', component: UserTypeComponent},
-        {path: 'venue/login', component: VenueLoginComponent}
+        {path: 'venue/login', component: VenueLoginComponent},
+        {path: 'venue/details', component: CustomerVenueDetailsComponent}
       ]
     )
   ],
