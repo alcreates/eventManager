@@ -26,6 +26,11 @@ import { VenueLoginComponent } from './venue-login/venue-login.component';
 import { VenuecardComponent } from './venuecard/venuecard.component';
 import { CustomerDashSearchComponent } from './customer-dash-search/customer-dash-search.component';
 import {MatCheckboxModule} from '@angular/material';
+import {MatSliderModule} from '@angular/material';
+import { CustomerDashResultsComponent } from './customer-dash-results/customer-dash-results.component';
+import { CustomerDashMapComponent } from './customer-dash-map/customer-dash-map.component';
+import { AgmCoreModule } from '@agm/core';
+import { CustomerVenueDetailsComponent } from './customer-venue-details/customer-venue-details.component';
 
 
 @NgModule({
@@ -44,7 +49,10 @@ import {MatCheckboxModule} from '@angular/material';
     VenueComponent,
     VenueLoginComponent,
     VenuecardComponent,
-    CustomerDashSearchComponent
+    CustomerDashSearchComponent,
+    CustomerDashResultsComponent,
+    CustomerDashMapComponent,
+    CustomerVenueDetailsComponent
 
   ],
   imports: [
@@ -60,6 +68,10 @@ import {MatCheckboxModule} from '@angular/material';
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    MatSliderModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC0tVghwOmKob4vZP7nD6G7foly8sPbScs'
+    }),
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent},
@@ -69,7 +81,8 @@ import {MatCheckboxModule} from '@angular/material';
         {path: 'customerdash', component: CustomerDashboardComponent},
         {path: 'register/venue', component: VenueComponent},
         {path: 'userType', component: UserTypeComponent},
-        {path: 'venue/login', component: VenueLoginComponent}
+        {path: 'venue/login', component: VenueLoginComponent},
+        {path: 'venue/details', component: CustomerVenueDetailsComponent}
       ]
     )
   ],

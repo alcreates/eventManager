@@ -9,6 +9,11 @@ import { MatDatepickerInputEvent } from '@angular/material';
 })
 export class CustomerDashSearchComponent implements OnInit {
   events: string[] = [];
+  max = 20000;
+  min = 0;
+  step = 1;
+  value = 0;
+  vertical = false;
   constructor() { }
 
   ngOnInit() {
@@ -17,6 +22,12 @@ export class CustomerDashSearchComponent implements OnInit {
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.events.push(`${type}: ${event.value}`);
     console.log(this.events);
-}
+  }
+
+  sliderVal(e){
+    this.value = e.value;
+  }
+
+  
 
 }
