@@ -1,3 +1,4 @@
-<p>
-  customer-dash-map works!
-</p>
+
+<agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+  <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+</agm-map>

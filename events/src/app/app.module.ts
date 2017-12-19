@@ -29,7 +29,7 @@ import {MatCheckboxModule} from '@angular/material';
 import {MatSliderModule} from '@angular/material';
 import { CustomerDashResultsComponent } from './customer-dash-results/customer-dash-results.component';
 import { CustomerDashMapComponent } from './customer-dash-map/customer-dash-map.component';
-
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -67,6 +67,9 @@ import { CustomerDashMapComponent } from './customer-dash-map/customer-dash-map.
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatSliderModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC0tVghwOmKob4vZP7nD6G7foly8sPbScs'
+    }),
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent},
