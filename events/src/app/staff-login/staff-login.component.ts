@@ -25,11 +25,12 @@ export class StaffLoginComponent implements OnInit {
    
     login() {
       console.log('in first login');
-      this.auth.login(this.loginInfo).subscribe(response => {
+      this.auth.staffLogin(this.loginInfo).subscribe(response => {
           this.auth.isLoggedIn();
           const result = response.json();
-          if (result.auth === true) {
-              this.router.navigateByUrl('/customerdash');
+          console.log(result);
+          if (result.isUser === true) {
+              this.router.navigate(['/staffDash', {userId: result.user.id}]);
           }else {
               console.log('login failed');
               this.loginFailed = true;

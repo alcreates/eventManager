@@ -34,6 +34,9 @@ import { CustomerDashMapComponent } from './customer-dash-map/customer-dash-map.
 import { AgmCoreModule } from '@agm/core';
 import { CustomerVenueDetailsComponent } from './customer-venue-details/customer-venue-details.component';
 import { StaffComponent } from './register/user-type/staff/staff.component';
+import { StaffDashComponent } from './staff-dash/staff-dash.component';
+import { StaffService } from './staff.service';
+import { StaffDashHeaderComponent } from './staff-dash-header/staff-dash-header.component';
 
 
 @NgModule({
@@ -57,7 +60,9 @@ import { StaffComponent } from './register/user-type/staff/staff.component';
     CustomerDashMapComponent,
     CustomerVenueDetailsComponent,
     StaffComponent,
-    StaffLoginComponent
+    StaffLoginComponent,
+    StaffDashComponent,
+    StaffDashHeaderComponent
 
   ],
   imports: [
@@ -88,13 +93,16 @@ import { StaffComponent } from './register/user-type/staff/staff.component';
         {path: 'userType', component: UserTypeComponent},
         {path: 'venue/login', component: VenueLoginComponent},
         {path: 'venue/details', component: CustomerVenueDetailsComponent},
-        {path: 'staff/login', component: StaffLoginComponent}
+        {path: 'register/staff', component: StaffComponent},
+        {path: 'staff/login', component: StaffLoginComponent},
+        {path: 'staffDash', component: StaffDashComponent}
       ]
     )
   ],
   providers: [
     AuthServiceService,
     VenueService,
+    StaffService,
     EventService,
     {provide: BrowserXhr, useClass: CustExtBrowserXhr},
     {provide: LocationStrategy, useClass: HashLocationStrategy}

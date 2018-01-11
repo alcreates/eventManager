@@ -1,0 +1,10 @@
+<div class="dash_header_container">
+      <div *ngIf="staffInfo.image" class="staffImage" [style.backgroundImage]="'url(http://localhost:3000/public/images/' + staffInfo.image + ')'" >
+
+      </div>
+
+      <div style="align-self: center; margin-top:30px;"> 
+        <span>hello, </span>  {{ staffInfo.firstName }}
+      </div>
+
+</div>  

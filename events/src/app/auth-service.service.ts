@@ -42,4 +42,12 @@ export class AuthServiceService {
   venueLogin(post) {
     return this.http.post('http://localhost:3000/auth/venue_login', post);
   }
+  staffLogin(post){
+
+    return this.http.post('http://localhost:3000/auth/staff_login', post);
+
+  }
+  registerStaff(post) {
+    return this.http.post('http://localhost:3000/auth/staff-signup', post);
+  }
 }

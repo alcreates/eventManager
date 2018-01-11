@@ -13,6 +13,7 @@ const flash = require('connect-flash');
 const authRoutes = require('./routes/auth-routes');
 const venueRoutes = require('./routes/venue-routes');
 const eventRoutes = require('./routes/event-routes');
+const staffRoutes = require('./routes/staff-routes');
 const cors = require('cors');
 
 const app = express();
@@ -43,6 +44,7 @@ app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use('/auth', authRoutes);
 app.use('/venue', venueRoutes);
 app.use('/event', eventRoutes);
+app.use('/staff', staffRoutes);
   
 
 // app.get('*', (req, res) => {

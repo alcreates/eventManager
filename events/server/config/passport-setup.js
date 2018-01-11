@@ -20,6 +20,10 @@ passport.deserializeUser((user,done)=>{
             models.user.findAll({where:{id: user.id }}).then((user)=>{
                 done(null,user);
             });
+   }else if(user.type == 'staff'){
+            models.staff.findAll({where:{id: user.id }}).then((user)=>{
+                done(null,user);
+            });
    }else{ 
        
             models.venue.findAll({where:{id: user.id }}).then((user)=>{
@@ -245,4 +249,80 @@ passport.use('venue-login',new LocalStrategy({
             return done(null, venue);
     });
  });
+}));
+
+passport.use('staff_login',new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback : true
+
+  },
+  function(req, username, password, done) { 
+      
+
+    process.nextTick(function () {
+    models.staff.findOne({ email :  username }).then((venue, err )=> {
+       
+         
+            if (err)
+            return done(err);
+            
+           
+            if ( !venue){
+               
+                return done(null, false, 
+                    req.flash('message', 'User Not found.'));                 
+            }
+           
+            if (!isValidPassword(venue, password)){
+              
+                return done(null, false, 
+                    req.flash('message', 'Invalid Password'));
+            }
+           
+            return done(null, venue);
+    });
+ });
+}));
+
+passport.use('staff-signup',new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback : true
+    },
+    function(req, username, password, done) {
+        console.log(username);
+        console.log(req.file, "this is file ---- ");
+
+          
+             models.staff.findOne({where :{ email : username }}).then((staff) =>{    
+                 
+                    
+                    if(staff){
+                        return done(null, false, 
+                            req.flash('message','User Already Exists'));
+                    }else{
+                         
+
+                          bcrypt.hash(password, null, null, function(err, hash) {
+                                models.staff.create({
+                                    email: req.body.email, 
+                                    password: hash, 
+                                    firstName: req.body.firstName,
+                                    lastName: req.body.lastName,
+                                    staffName: req.body.staffName,
+                                    streetAddress: req.body.streetAddress ,
+                                    state: req.body.state ,
+                                    zipCode: req.body.zipcode,
+                                    phoneNumber:req.body.phoneNumber, 
+                                    image: req.file.filename }).then((staff) =>{
+                                    
+                                    return done(null, staff);
+                                }); 
+                           });   
+                    }
+            
+            
+            });
+
 }));
