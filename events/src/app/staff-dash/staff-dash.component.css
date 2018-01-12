@@ -1,0 +1,50 @@
+.example-container {
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    
+    
+  }
+  
+  .example-sidenav {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    width: 200px;
+    background:#293544;
+  }
+  .menu_items {
+      cursor: pointer;
+      color:#ccc;
+      font-family: Avenir;
+      text-align: center;
+  }
+  .menu_items:hover {
+    background-color: white; 
+    opacity: 0.1
+    
+  }
+  mat-list{
+      margin-top: 50px;
+  }
+  .mag_glass{
+      margin: 10px;
+      font-size: 14px;
+  }
+  .fill-remaining-space{
+    flex: 1 1 auto;
+  }
+  .example-full-width {
+    width: 270px;
+    margin-right:20px;
+  }
+  .book_button {
+    font-family: Avenir; 
+    font-size:20px;
+    border: solid 0.5px #ccc;
+    margin-top: 40px;
+    width: 300px;
+
+  }

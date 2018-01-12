@@ -1,4 +1,57 @@
-<div class="container">
+
+ <ng-container >
+   
+    <mat-sidenav-container class="example-container">
+      <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav"
+                   [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+                   [fixedBottomGap]="options.value.bottom">
+       
+        <app-staff-dash-header [staffInfo]="staffInfo"></app-staff-dash-header>
+        <mat-list>
+            <mat-list-item class="menu_items"> Dashboard </mat-list-item>
+            
+            <mat-list-item class="menu_items"> Calendar </mat-list-item>
+            <mat-list-item class="menu_items"> Forms </mat-list-item>
+            <mat-list-item class="menu_items"> Analytics </mat-list-item>
+            <mat-list-item class="menu_items"> Venues </mat-list-item>
+        </mat-list>
+      </mat-sidenav>
   
-  <app-staff-dash-header [staffInfo]="staffInfo"></app-staff-dash-header>
-</div>
+      <mat-sidenav-content [formGroup]="options">
+
+          <mat-toolbar>
+           <span>Dashboard</span> 
+            <span class="fill-remaining-space"></span>
+                <i class="fa fa-search mag_glass" aria-hidden="true"></i>
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                      <input matInput >
+                    </mat-form-field>
+                </form>
+          </mat-toolbar>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-4">
+                
+                <app-venue-list></app-venue-list>
+
+                <button class="book_button"  mat-button>Book Event</button>
+
+            </div>
+            <div class="col-8">
+                 <app-calendar></app-calendar>
+            </div>
+          </div>
+            
+        </div>
+
+          
+       
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  
+    
+  </ng-container>
+  
+  

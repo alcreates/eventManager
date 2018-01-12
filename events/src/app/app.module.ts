@@ -7,7 +7,7 @@ import { AuthServiceService } from './auth-service.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatInputModule,MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatSelectModule } from '@angular/material';
+import { MatInputModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatSelectModule, MatSidenav, MatSidenavModule } from '@angular/material';
 import {MatMenuModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -37,6 +37,20 @@ import { StaffComponent } from './register/user-type/staff/staff.component';
 import { StaffDashComponent } from './staff-dash/staff-dash.component';
 import { StaffService } from './staff.service';
 import { StaffDashHeaderComponent } from './staff-dash-header/staff-dash-header.component';
+import {MatListModule} from '@angular/material';
+import {MatToolbarModule} from '@angular/material';
+import { VenueListComponent } from './venue-list/venue-list.component';
+import {MatCardModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material';
+import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarModule } from 'angular-calendar';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
+
+
+
+
 
 
 @NgModule({
@@ -62,7 +76,9 @@ import { StaffDashHeaderComponent } from './staff-dash-header/staff-dash-header.
     StaffComponent,
     StaffLoginComponent,
     StaffDashComponent,
-    StaffDashHeaderComponent
+    StaffDashHeaderComponent,
+    VenueListComponent,
+    CalendarComponent
 
   ],
   imports: [
@@ -79,6 +95,13 @@ import { StaffDashHeaderComponent } from './staff-dash-header/staff-dash-header.
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatSliderModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    NgbModule.forRoot(),
+    CalendarModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC0tVghwOmKob4vZP7nD6G7foly8sPbScs'
     }),
