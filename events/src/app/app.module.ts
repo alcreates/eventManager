@@ -45,6 +45,8 @@ import {MatButtonModule} from '@angular/material';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarModule } from 'angular-calendar';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
 
 
 
@@ -100,6 +102,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
     NgbModule.forRoot(),
     CalendarModule.forRoot(),
     AgmCoreModule.forRoot({

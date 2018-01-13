@@ -20,7 +20,7 @@
     </div>
   </ng-template>
   
-  <div class="row text-center">
+  <div style="margin-top:50px;" class="row text-center">
     <div class="col-md-4">
       <div style="display:flex;">
         <button
@@ -31,45 +31,48 @@
           (viewDateChange)="activeDayIsOpen = false">
           Previous
         </button>
-        <div
-          class="btn btn-outline-secondary"
+        <button
+          mat-button
           mwlCalendarToday
           [(viewDate)]="viewDate">
           Today
-        </div>
-        <div
-          class="btn btn-primary"
+        </button>
+        <button
+          mat-button
           mwlCalendarNextView
           [view]="view"
           [(viewDate)]="viewDate"
           (viewDateChange)="activeDayIsOpen = false">
           Next
-        </div>
+        </button>
       </div>
     </div>
     <div class="col-md-4">
-      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+      <h3 style="font-family:Avenir;">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
     </div>
     <div class="col-md-4">
-      <div class="btn-group">
-        <div
-          class="btn btn-primary"
+      <div  class="btn-group">
+        <button
+        
+         mat-button
           (click)="view = 'month'"
           [class.active]="view === 'month'">
           Month
-        </div>
-        <div
-          class="btn btn-primary"
+        </button>
+        <button
+       
+          mat-button
           (click)="view = 'week'"
           [class.active]="view === 'week'">
           Week
-        </div>
-        <div
-          class="btn btn-primary"
+      </button>
+        <button
+        
+          mat-button
           (click)="view = 'day'"
           [class.active]="view === 'day'">
           Day
-        </div>
+    </button>
       </div>
     </div>
   </div>
@@ -150,18 +153,23 @@
             (change)="refresh.next()">
         </td>
         <td>
-          <!-- <mwl-demo-utils-date-time-picker
-            [(ngModel)]="event.start"
-            (ngModelChange)="refresh.next()"
-            placeholder="Not set">
-          </mwl-demo-utils-date-time-picker> -->
+            <label>
+                Date Time:
+                <input  [(ngModel)]="event.start"
+                (ngModelChange)="refresh.next()" [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5">
+                <owl-date-time  #dt5></owl-date-time>
+            </label>
+            
         </td>
         <td>
-          <!-- <mwl-demo-utils-date-time-picker
-            [(ngModel)]="event.end"
-            (ngModelChange)="refresh.next()"
-            placeholder="Not set">
-          </mwl-demo-utils-date-time-picker> -->
+            <label>
+                Date Time:
+                <input [(ngModel)]="event.end"
+                (ngModelChange)="refresh.next()" [owlDateTimeTrigger]="dt6" [owlDateTime]="dt6">
+                <owl-date-time  #dt6></owl-date-time>
+            </label>
+            
+         
         </td>
         <td>
           <button

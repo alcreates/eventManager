@@ -22,6 +22,8 @@
           <mat-toolbar>
            <span>Dashboard</span> 
             <span class="fill-remaining-space"></span>
+                <app-venue-list></app-venue-list>
+               
                 <i class="fa fa-search mag_glass" aria-hidden="true"></i>
                 <form class="example-form">
                     <mat-form-field class="example-full-width">
@@ -32,14 +34,8 @@
 
         <div class="container">
           <div class="row">
-            <div class="col-4">
-                
-                <app-venue-list></app-venue-list>
-
-                <button class="book_button"  mat-button>Book Event</button>
-
-            </div>
-            <div class="col-8">
+            
+            <div class="col">
                  <app-calendar></app-calendar>
             </div>
           </div>

@@ -112,7 +112,7 @@ export class CalendarComponent implements OnInit {
     }
   ];
 
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen: boolean = false;
 
   constructor(private modal: NgbModal) {}
 
@@ -135,6 +135,7 @@ export class CalendarComponent implements OnInit {
     newStart,
     newEnd
   }: CalendarEventTimesChangedEvent): void {
+    console.log("eventTimesChanged");
     event.start = newStart;
     event.end = newEnd;
     this.handleEvent('Dropped or resized', event);
@@ -158,6 +159,7 @@ export class CalendarComponent implements OnInit {
         afterEnd: true
       }
     });
+    console.log(this.events);
     this.refresh.next();
   }
 
