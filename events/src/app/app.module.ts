@@ -1,4 +1,6 @@
+import { StaffLoginComponent } from './staff-login/staff-login.component';
 import { VenueService } from './venue.service';
+import { EventService } from './event.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserXhr, HttpModule } from '@angular/http';
 import { AuthServiceService } from './auth-service.service';
@@ -31,6 +33,7 @@ import { CustomerDashResultsComponent } from './customer-dash-results/customer-d
 import { CustomerDashMapComponent } from './customer-dash-map/customer-dash-map.component';
 import { AgmCoreModule } from '@agm/core';
 import { CustomerVenueDetailsComponent } from './customer-venue-details/customer-venue-details.component';
+import { StaffComponent } from './register/user-type/staff/staff.component';
 
 
 @NgModule({
@@ -52,7 +55,9 @@ import { CustomerVenueDetailsComponent } from './customer-venue-details/customer
     CustomerDashSearchComponent,
     CustomerDashResultsComponent,
     CustomerDashMapComponent,
-    CustomerVenueDetailsComponent
+    CustomerVenueDetailsComponent,
+    StaffComponent,
+    StaffLoginComponent
 
   ],
   imports: [
@@ -82,13 +87,15 @@ import { CustomerVenueDetailsComponent } from './customer-venue-details/customer
         {path: 'register/venue', component: VenueComponent},
         {path: 'userType', component: UserTypeComponent},
         {path: 'venue/login', component: VenueLoginComponent},
-        {path: 'venue/details', component: CustomerVenueDetailsComponent}
+        {path: 'venue/details', component: CustomerVenueDetailsComponent},
+        {path: 'staff/login', component: StaffLoginComponent}
       ]
     )
   ],
   providers: [
     AuthServiceService,
     VenueService,
+    EventService,
     {provide: BrowserXhr, useClass: CustExtBrowserXhr},
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],

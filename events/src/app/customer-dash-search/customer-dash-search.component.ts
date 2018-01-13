@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material';
+import { EventService } from './../event.service';
 
 
 @Component({
@@ -14,7 +15,12 @@ export class CustomerDashSearchComponent implements OnInit {
   step = 1;
   value = 0;
   vertical = false;
-  constructor() { }
+  constructor(private service: EventService) {
+      service.getLocations().subscribe((result) => {  
+          console.log(result.json());
+      });
+      
+   }
 
   ngOnInit() {
   }
