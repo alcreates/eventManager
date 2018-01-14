@@ -6,7 +6,7 @@ const models = require('../models');
 router.get('/member', (req,res)=>{
    
    
-     models.staff.findAll({where: {id: req.query['id']}}).then(results =>{
+     models.admin_user.findAll({where: {id: req.query['id']}}).then(results =>{
        
         res.json(results);
 

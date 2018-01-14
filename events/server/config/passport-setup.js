@@ -17,18 +17,23 @@ passport.serializeUser((user,done)=>{
 passport.deserializeUser((user,done)=>{
     //call db to find user id;
    if(user.type == 'personal'){
-            models.user.findAll({where:{id: user.id }}).then((user)=>{
-                done(null,user);
-            });
+            // models.user.findAll({where:{id: user.id }}).then((user)=>{
+            //     done(null,user);
+            // });
    }else if(user.type == 'staff'){
-            models.staff.findAll({where:{id: user.id }}).then((user)=>{
-                done(null,user);
-            });
+            // models.Admin_User.findAll({where:{id: user.id }}).then((user)=>{
+            //     done(null,user);
+            // });
    }else{ 
-       
-            models.venue.findAll({where:{id: user.id }}).then((user)=>{
+        console.log("in esle");
+        console.log(user);
+        console.log(user.id);
+        models.Admin_User.findAll({where:{id: user.id }}).then((user)=>{
                 done(null,user);
             });
+            // models.venue.findAll({where:{id: user.id }}).then((user)=>{
+            //     done(null,user);
+            // });
     }
   
    
@@ -295,7 +300,7 @@ passport.use('staff-signup',new LocalStrategy({
         console.log(req.file, "this is file ---- ");
 
           
-             models.staff.findOne({where :{ email : username }}).then((staff) =>{    
+             models.Admin_User.findOne({where :{ email : username }}).then((staff) =>{    
                  
                     
                     if(staff){
@@ -305,12 +310,11 @@ passport.use('staff-signup',new LocalStrategy({
                          
 
                           bcrypt.hash(password, null, null, function(err, hash) {
-                                models.staff.create({
+                                models.Admin_User.create({
                                     email: req.body.email, 
                                     password: hash, 
                                     firstName: req.body.firstName,
                                     lastName: req.body.lastName,
-                                    staffName: req.body.staffName,
                                     streetAddress: req.body.streetAddress ,
                                     state: req.body.state ,
                                     zipCode: req.body.zipcode,

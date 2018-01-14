@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sql:migrate:undo": "npm run sql db:migrate:undo:all",
+    "sql:migrate": "npm run sql db:migrate",
+    "sql:seed:undo": "npm run sql db:seed:undo:all",
+    "sql:seed": "npm run sql db:seed:all",
+    "sql:s": "npm run sql:migrate:undo && npm run sql:migrate && npm run sql:seed",
+    "sql": "./node_modules/sequelize-cli/lib/sequelize",
+    "sqlize:s": "sequelize db:migrate:undo && db:migrate && db:seed:all"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "install": "^0.10.2",
+    "npm": "^5.6.0",
+    "sequelize-cli": "^3.2.0"
+  },
+  "dependencies": {
+    "sequelize": "^4.31.2"
+  }
+}

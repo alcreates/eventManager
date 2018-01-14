@@ -67,9 +67,9 @@ const server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-models.sequelize.sync().then(() => {
+// models.sequelize.sync().then(() => {
 
     server.listen(port, () => console.log(`API running on localhost:${port} `));
 
     
-});
+// });

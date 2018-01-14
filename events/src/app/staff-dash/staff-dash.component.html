@@ -22,7 +22,7 @@
           <mat-toolbar>
            <span>Dashboard</span> 
             <span class="fill-remaining-space"></span>
-                <app-venue-list></app-venue-list>
+                <app-venue-list (messageEvent)="receiveMessage($event)"></app-venue-list>
                
                 <i class="fa fa-search mag_glass" aria-hidden="true"></i>
                 <form class="example-form">
@@ -36,7 +36,7 @@
           <div class="row">
             
             <div class="col">
-                 <app-calendar></app-calendar>
+                 <app-calendar [venueId]="venueId"></app-calendar>
             </div>
           </div>
             

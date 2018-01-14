@@ -124,7 +124,7 @@
       <tr>
         <th>Title</th>
         <th>Primary color</th>
-        <th>Secondary color</th>
+        <th>Description</th>
         <th>Starts at</th>
         <th>Ends at</th>
         <th>Remove</th>
@@ -147,10 +147,11 @@
             (change)="refresh.next()">
         </td>
         <td>
-          <input
+          <!-- <input
             type="color"
             [(ngModel)]="event.color.secondary"
-            (change)="refresh.next()">
+            (change)="refresh.next()"> -->
+            <textarea [(ngModel)]="event.description" placeholder="description"></textarea>
         </td>
         <td>
             <label>

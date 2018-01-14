@@ -19,6 +19,7 @@ export class StaffDashComponent implements OnInit, OnDestroy {
   id;
   staffInfo = {};
   sub;
+  venueId:string;
   constructor(private staff: StaffService, private route: ActivatedRoute, private service: StaffService,fb: FormBuilder) {
       this.id = route.snapshot.paramMap.get('userId');
       
@@ -39,6 +40,11 @@ export class StaffDashComponent implements OnInit, OnDestroy {
   close(reason: string) {
     this.reason = reason;
     this.sidenav.close();
+  }
+ 
+  receiveMessage($event) {
+    console.log($event);
+    this.venueId = $event
   }
 
   

@@ -13,5 +13,17 @@ router.get('/locations', (req,res)=>{
      });
 });
 
+router.get('/get-events', (req,res)=>{
+   
+   
+    models.events.findAll({where: {id: req.query['id']}}).then(results =>{
+      
+       res.json(results);
+
+    }).catch((error)=>{
+       console.log(error);
+    });
+});
+
 
 module.exports = router;

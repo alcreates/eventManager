@@ -9,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class FeaturedVenuesComponent implements OnInit {
   venues;
   constructor(private auth: VenueService) {
-    this.auth.getFeatured().subscribe(venues => {
-        this.venues = venues.json();
-        console.log(this.venues);
-    });
+    // this.auth.getFeatured().subscribe(venues => {
+    //     this.venues = venues.json();
+    //     console.log(this.venues);
+    // });
   }
 
   ngOnInit() {
