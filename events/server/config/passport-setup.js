@@ -32,7 +32,7 @@ passport.deserializeUser((user,done)=>{
         console.log("in esle");
         console.log(user);
         console.log(user.id);
-        models.Admin_User.findAll({where:{id: user.id }}).then((user)=>{
+        models.Venue.findAll({where:{id: user.id }}).then((user)=>{
                 done(null,user);
             });
             // models.venue.findAll({where:{id: user.id }}).then((user)=>{
@@ -194,7 +194,7 @@ passport.use('venue-signup',new LocalStrategy({
         console.log(req.file, "this is file ---- ");
 
           
-             models.venue.findOne({where :{ email : username }}).then((venue) =>{    
+             models.Venue.findOne({where :{ email : username }}).then((venue) =>{    
                  
                     
                     if(venue){
@@ -204,7 +204,7 @@ passport.use('venue-signup',new LocalStrategy({
                          
 
                           bcrypt.hash(password, null, null, function(err, hash) {
-                                models.venue.create({
+                                models.Venue.create({
                                     email: req.body.email, 
                                     password: hash, 
                                     firstName: req.body.firstName,
@@ -236,7 +236,7 @@ passport.use('venue-login',new LocalStrategy({
       
 
     process.nextTick(function () {
-    models.venue.findOne({ email :  username }).then((venue, err )=> {
+    models.Venue.findOne({ email :  username }).then((venue, err )=> {
        
          
             if (err)

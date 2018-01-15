@@ -3,7 +3,39 @@ module.exports = (sequelize, DataTypes) => {
   var Venue = sequelize.define('Venue', {
     venueName: {
       type: DataTypes.STRING
+    },
+    firstName: {
+      type: DataTypes.STRING
+    },
+    lastName:{
+      type: DataTypes.STRING
+    },
+    streetAddress:{
+      type: DataTypes.STRING
+    },
+    zipCode:{
+      type: DataTypes.STRING
+    },
+    phoneNumber:{
+      type:DataTypes.STRING
+    },
+    password:{
+      type: DataTypes.STRING
+    },
+    googleId:{
+      type: DataTypes.STRING
+    },
+    linkedInId:{
+      type: DataTypes.STRING
+    },
+    image:{
+      type: DataTypes.STRING
+    },
+    email:{
+      type: DataTypes.STRING
     }
+  
+
   }, {
     classMethods: {
       associate: function(models) {
@@ -13,8 +45,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Venue.associate = function(models){
-    Venue.belongsTo(models.VenueDetail);
-  }
+ 
   return Venue;
 };

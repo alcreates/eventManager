@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
-    return queryInterface.createTable('Venue', {
+    return queryInterface.createTable('Venues', {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -20,7 +20,38 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      firstName: {
+        type: Sequelize.STRING
+      },
+      lastName:{
+        type: Sequelize.STRING
+      },
+      streetAddress:{
+        type: Sequelize.STRING
+      },
+      zipCode:{
+        type: Sequelize.STRING
+      },
+      phoneNumber:{
+        type: Sequelize.STRING
+      },
+      password:{
+        type: Sequelize.STRING
+      },
+      googleId:{
+        type: Sequelize.STRING
+      },
+      linkedInId:{
+        type: Sequelize.STRING
+      },
+      image:{
+        type: Sequelize.STRING
+      },
+      email:{
+        type: Sequelize.STRING
       }
+    
       
       
     });
@@ -41,6 +72,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    return queryInterface.dropTable('Venue');
+    return queryInterface.dropTable('Venues');
   }
 };
