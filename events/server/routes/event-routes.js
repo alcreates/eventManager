@@ -16,7 +16,7 @@ router.get('/locations', (req,res)=>{
 router.get('/get-events', (req,res)=>{
    
    
-    models.Appointment.findAll({where: {id: req.query['id']}}).then(results =>{
+    models.Appointment.findAll({where: {venueId: req.query['id']}}).then(results =>{
       
        res.json(results);
 
@@ -25,8 +25,15 @@ router.get('/get-events', (req,res)=>{
     });
 });
 
-router.post('/post-events',(req,res)=>{
-    console.log(req.body , "this is query");
+router.post('/post-events',(req,res,next)=>{
+    
+    req.body.events.forEach((event)=>{
+            models.Appointment.upsert({id: event.id, start: event.start, end: event.end, title: event.title }).then(results =>{
+                next();
+            }).catch((error)=>{
+                console.log(error);
+            });
+    });
 });
 
 

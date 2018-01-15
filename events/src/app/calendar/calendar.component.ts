@@ -66,8 +66,27 @@ export class CalendarComponent implements OnInit {
 
   constructor(private modal: NgbModal, private service: EventService, private venue: VenueService) {
     this.venue.currentMessage.subscribe(message => {
-        console.log(message);
+        this.events = this.normalizeEvents(message);
+        console.log(this.events, "normalized events");
+        this.refresh.next();
     });
+  }
+
+  normalizeEvents(message){
+      const formatted = [];
+
+      message.forEach(ele =>{
+          const newObj ={
+            start: new Date(ele.start),
+            end: new Date(ele.end),
+            title: ele.title,
+            color: colors.red,
+            actions: this.actions
+          }
+          formatted.push(newObj);
+      });
+
+      return formatted;
   }
 
 
@@ -99,30 +118,26 @@ export class CalendarComponent implements OnInit {
     //   color: colors.red,
     //   actions: this.actions
     // },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
+    // {
+    //   start: startOfDay(new Date()),
+    //   title: 'An event with no end date',
+    //   color: colors.yellow,
+    //   actions: this.actions
+    // },
+    // {
+    //   start: subDays(endOfMonth(new Date()), 3),
+    //   end: addDays(endOfMonth(new Date()), 3),
+    //   title: 'A long event that spans 2 months',
+    //   color: colors.blue
+    // },
+    // {
+    //   start: addHours(startOfDay(new Date()), 2),
+    //   end: new Date(),
+    //   title: 'A draggable and resizable event',
+    //   color: colors.yellow,
+    //   actions: this.actions,
+    //   draggable: true
+    // }
   ];
 
   activeDayIsOpen: boolean = false;
@@ -172,17 +187,7 @@ export class CalendarComponent implements OnInit {
         afterEnd: true
       }
     });
-    this.newEvents.push({
-      title: 'New event',
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      color: colors.red,
-      draggable: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      }
-    });
+   
     console.log(this.events);
     console.log(this.newEvents);
     this.refresh.next();

@@ -19,8 +19,8 @@ export class VenueService {
     const search = new URLSearchParams();
     search.set('id', id);
     this.http.get('http://localhost:3000/event/get-events',{search: search}).subscribe(events => {
-        console.log(events);
-        this.messageSource.next(events);
+        console.log(events.json(), "these are the events");
+        this.messageSource.next(events.json());
     });
   }
 

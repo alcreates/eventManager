@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     start: DataTypes.DATE,
     end: DataTypes.DATE,
+    color: DataTypes.STRING,
+    draggable: DataTypes.STRING,
+    actions: DataTypes.STRING,
     venueId: {
       type: DataTypes.UUID,
       references: {
