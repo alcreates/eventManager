@@ -115,6 +115,9 @@
       (click)="addEvent()">
       Add new
     </button>
+    <button style="margin-right: 10px;" class="btn btn-primary pull-right" (click)="submit()">
+        Submit
+    </button>
     <div class="clearfix"></div>
   </h3>
   
@@ -138,6 +141,7 @@
             type="text"
             class="form-control"
             [(ngModel)]="event.title"
+            [(ngModel)]="newEvents.title"
             (keyup)="refresh.next()">
         </td>
         <td>
@@ -178,6 +182,7 @@
             (click)="events.splice(index, 1); refresh.next()">
             Delete
           </button>
+         
         </td>
       </tr>
     </tbody>

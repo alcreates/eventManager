@@ -18,4 +18,9 @@ export class EventService {
     return this.http.get('http://localhost:3000/event/get-events',{search: search});
   }
 
+  postEvents(events){
+    console.log(events, "this are events in post events");
+    return this.http.post('http://localhost:3000/event/post-events',{ events : events});
+  }
+
 }

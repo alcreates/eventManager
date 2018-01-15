@@ -25,5 +25,9 @@ router.get('/get-events', (req,res)=>{
     });
 });
 
+router.post('/post-events',(req,res)=>{
+    console.log(req.body , "this is query");
+});
+
 
 module.exports = router;

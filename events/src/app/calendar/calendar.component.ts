@@ -24,6 +24,8 @@ import {
   CalendarEventAction,
   CalendarEventTimesChangedEvent
 } from 'angular-calendar';
+import { PACKAGE_ROOT_URL } from '@angular/core/src/application_tokens';
+import { EventService } from '../event.service';
 
 const colors: any = {
   red: {
@@ -78,44 +80,46 @@ export class CalendarComponent implements OnInit {
   ];
 
   refresh: Subject<any> = new Subject();
+  newEvents: CalendarEvent[] = [];
 
   events: CalendarEvent[] = [
+    
     // {
-    //   start: subDays(startOfDay(new Date()), 1),
+    //   start:new Date('Mon Jan 18 2018 11:54:44 GMT-0500'),
     //   end: addDays(new Date(), 1),
     //   title: 'A 3 day event',
     //   color: colors.red,
     //   actions: this.actions
     // },
-    // {
-    //   start: startOfDay(new Date()),
-    //   title: 'An event with no end date',
-    //   color: colors.yellow,
-    //   actions: this.actions
-    // },
-    // {
-    //   start: subDays(endOfMonth(new Date()), 3),
-    //   end: addDays(endOfMonth(new Date()), 3),
-    //   title: 'A long event that spans 2 months',
-    //   color: colors.blue
-    // },
-    // {
-    //   start: addHours(startOfDay(new Date()), 2),
-    //   end: new Date(),
-    //   title: 'A draggable and resizable event',
-    //   color: colors.yellow,
-    //   actions: this.actions,
-    //   resizable: {
-    //     beforeStart: true,
-    //     afterEnd: true
-    //   },
-    //   draggable: true
-    // }
+    {
+      start: startOfDay(new Date()),
+      title: 'An event with no end date',
+      color: colors.yellow,
+      actions: this.actions
+    },
+    {
+      start: subDays(endOfMonth(new Date()), 3),
+      end: addDays(endOfMonth(new Date()), 3),
+      title: 'A long event that spans 2 months',
+      color: colors.blue
+    },
+    {
+      start: addHours(startOfDay(new Date()), 2),
+      end: new Date(),
+      title: 'A draggable and resizable event',
+      color: colors.yellow,
+      actions: this.actions,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true
+      },
+      draggable: true
+    }
   ];
 
   activeDayIsOpen: boolean = false;
 
-  constructor(private modal: NgbModal) {}
+  constructor(private modal: NgbModal, private service: EventService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
    
@@ -161,8 +165,27 @@ export class CalendarComponent implements OnInit {
         afterEnd: true
       }
     });
+    this.newEvents.push({
+      title: 'New event',
+      start: startOfDay(new Date()),
+      end: endOfDay(new Date()),
+      color: colors.red,
+      draggable: true,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true
+      }
+    });
     console.log(this.events);
+    console.log(this.newEvents);
     this.refresh.next();
+  }
+
+  submit(){
+    console.log("submit");
+    this.service.postEvents(this.events).subscribe(response => {
+      console.log(response, "response");
+    });
   }
 
   ngOnInit() {
