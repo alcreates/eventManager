@@ -5,7 +5,7 @@ import {URLSearchParams} from '@angular/http';
 
 @Injectable()
 export class VenueService {
-  private messageSource = new BehaviorSubject<string>("0");
+  private messageSource = new BehaviorSubject<any>([]);
   currentMessage = this.messageSource.asObservable();
 
 
@@ -20,6 +20,7 @@ export class VenueService {
     search.set('id', id);
     this.http.get('http://localhost:3000/event/get-events',{search: search}).subscribe(events => {
         console.log(events);
+        this.messageSource.next(events);
     });
   }
 

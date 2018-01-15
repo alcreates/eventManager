@@ -16,7 +16,7 @@ router.get('/locations', (req,res)=>{
 router.get('/get-events', (req,res)=>{
    
    
-    models.events.findAll({where: {id: req.query['id']}}).then(results =>{
+    models.Appointment.findAll({where: {id: req.query['id']}}).then(results =>{
       
        res.json(results);
 

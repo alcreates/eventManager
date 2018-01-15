@@ -1,6 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Appointment = sequelize.define('Appointment', {
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4
+    },
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     start: DataTypes.DATE,

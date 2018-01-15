@@ -1,6 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Venue = sequelize.define('Venue', {
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4
+    },
     venueName: {
       type: DataTypes.STRING
     },

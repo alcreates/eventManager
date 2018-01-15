@@ -1,3 +1,4 @@
+import { VenueService } from './../venue.service';
 
 import {
   OnInit,
@@ -63,6 +64,13 @@ export class CalendarComponent implements OnInit {
     event: CalendarEvent;
   };
 
+  constructor(private modal: NgbModal, private service: EventService, private venue: VenueService) {
+    this.venue.currentMessage.subscribe(message => {
+        console.log(message);
+    });
+  }
+
+
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -119,8 +127,7 @@ export class CalendarComponent implements OnInit {
 
   activeDayIsOpen: boolean = false;
 
-  constructor(private modal: NgbModal, private service: EventService) {}
-
+  
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
    
     if (isSameMonth(date, this.viewDate)) {

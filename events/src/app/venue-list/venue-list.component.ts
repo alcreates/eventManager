@@ -19,7 +19,7 @@ export class VenueListComponent implements OnInit {
    }
 
    selectedVenue(id, name){
-     
+    
     this.messageEvent.emit(id);
     this.selected = name;
 
