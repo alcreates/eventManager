@@ -4,7 +4,7 @@ const models = require('../models');
 
 
 router.get('/featured', (req,res)=>{
-     models.venue.findAll().then(results =>{
+     models.Venue.findAll().then(results =>{
         console.log(results);
         res.json(results);
 

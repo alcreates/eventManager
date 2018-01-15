@@ -31,6 +31,9 @@ module.exports = (sequelize, DataTypes) => {
     email:{
       type:DataTypes.STRING
     },
+    type:{
+      type:DataTypes.STRING
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE

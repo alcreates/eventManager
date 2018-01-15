@@ -24,6 +24,10 @@ passport.deserializeUser((user,done)=>{
             // models.Admin_User.findAll({where:{id: user.id }}).then((user)=>{
             //     done(null,user);
             // });
+            console.log('in staff ---------');
+            models.Admin_User.findAll({where:{id: user.id }}).then((user)=>{
+                done(null,user);
+            });
    }else{ 
         console.log("in esle");
         console.log(user);
@@ -266,26 +270,26 @@ passport.use('staff_login',new LocalStrategy({
       
 
     process.nextTick(function () {
-    models.staff.findOne({ email :  username }).then((venue, err )=> {
+    models.Admin_User.findOne({ email :  username }).then((user, err )=> {
        
          
             if (err)
             return done(err);
             
            
-            if ( !venue){
+            if ( !user){
                
                 return done(null, false, 
                     req.flash('message', 'User Not found.'));                 
             }
            
-            if (!isValidPassword(venue, password)){
+            if (!isValidPassword(user, password)){
               
                 return done(null, false, 
                     req.flash('message', 'Invalid Password'));
             }
            
-            return done(null, venue);
+            return done(null, user);
     });
  });
 }));
@@ -319,6 +323,7 @@ passport.use('staff-signup',new LocalStrategy({
                                     state: req.body.state ,
                                     zipCode: req.body.zipcode,
                                     phoneNumber:req.body.phoneNumber, 
+                                    type: 'staff',
                                     image: req.file.filename }).then((staff) =>{
                                     
                                     return done(null, staff);

@@ -33,10 +33,10 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        VenueDetail.belongsTo(models.Venue,{
-          foreignKey: 'VenueDetailId',
-          onDelete: 'CASCADE'
-        });
+        // VenueDetail.belongsTo(models.Venue,{
+        //   foreignKey: 'VenueDetailId',
+        //   onDelete: 'CASCADE'
+        // });
         
       }
     }
